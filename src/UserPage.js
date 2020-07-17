@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import NavBar from './NavBar'
 
 export default class UserPage extends Component {
+    state = {
+        trips: [],
+      
+      };
+    
+   
+    
 
     render() {
         return (
@@ -11,7 +18,7 @@ export default class UserPage extends Component {
                 </div>
 
                 {/* // <div className="welcome-user">
-            //     Hello {this.props.currentUser.name}, your next trip is:
+            //     Hello {this.props.currentUser.name}, your nex trip is:
             // </div>
 
             // <div className="next-trip">

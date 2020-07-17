@@ -15,53 +15,88 @@ import {
   Switch,
   Route,
   Link,
-  useHistory
+  useHistory,
+  Redirect
 } from "react-router-dom";
 
 
 class App extends Component {
+  state = {
+    auth: { currentUser: {} },
+  };
 
-  
+  handleLogin = (data) => {
+    const currentUser = { currentUser: data.user };
+    this.setState({ auth: currentUser });
+  };
+
+  handleLogout = () => {
+    this.setState({ auth: { currentUser: {} } });
+    localStorage.clear()
+  };
+
+
 
   render() {
     return (
       <div>
-      <BrowserRouter>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
+        <BrowserRouter>
+          <Route exact path='/login' component={Login}>
+            <Login />
+          </Route>
+          <Route exact path='/signup' component={SignUp}>
+            <SignUp />
+          </Route>
 
-            <Route exact path='/login'>
-              <Login />
-            </Route>
+          <Route
+            exact
+            path="/"
+            render={(routerProps) => {
+              return (
+                <Home
+                  handleLogin={this.handleLogin}
+                  routerProps={routerProps}
+                />
+              );
+            }}
+          />
+          {this.state.auth.currentUser.id ? (
+            <Switch>
 
-            <Route exact path='/signup'>
-              <SignUp />
-            </Route>
-
-            <Route exact path='/userpage'>
-              <UserPage />
-            </Route>
-
-            <Route exact path='/login'>
-              <CreateTrip />
-            </Route>
-
-            <Route exact path='/login'>
-              <AddGear />
-            </Route>
-
-            <Route exact path='/login'>
-              <Trip />
-            </Route>
-
-            <Route exact path='/login'>
-              <Gear />
-            </Route>
+              <Route
+                path={`/users/${this.state.auth.currentUser.id}`}
+                render={(routerProps) => {
+                  return (
+                    <UserPage
+                      currentUser={this.state.auth.currentUser}
+                      handleLogout={this.handleLogout}
+                      routerProps={routerProps}
+                    />
+                  );
+                }}
+              />
 
 
-          </Switch>
+              <Route exact path='/createtrip'>
+                <CreateTrip />
+              </Route>
+
+              <Route exact path='/addgear'>
+                <AddGear />
+              </Route>
+
+              <Route exact path='/trip'>
+                <Trip />
+              </Route>
+
+              <Route exact path='/gear'>
+                <Gear />
+              </Route>
+
+
+            </Switch>) : (
+              <Redirect to="/" />
+            )}
         </BrowserRouter>
       </div>
     );
