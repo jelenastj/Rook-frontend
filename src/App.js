@@ -18,6 +18,7 @@ import {
   useHistory,
   Redirect
 } from "react-router-dom";
+import CreateTripForm from './CreateTripForm';
 
 
 class App extends Component {
@@ -75,11 +76,19 @@ class App extends Component {
                   );
                 }}
               />
-
-
-              <Route exact path='/createtrip'>
-                <CreateTrip />
-              </Route>
+              <Route
+                path={"/createtrip"}
+                component={CreateTripForm}
+                render={(routerProps) => {
+                  return (
+                    <CreateTrip
+                      currentUser={this.state.auth.currentUser}
+                      handleLogout={this.handleLogout}
+                      routerProps={routerProps}
+                    />
+                  );
+                }}
+              />
 
               <Route exact path='/addgear'>
                 <AddGear />

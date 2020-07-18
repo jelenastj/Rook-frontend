@@ -64,7 +64,7 @@ class Login extends Component {
         return (
             <div>
             {this.state.loggedIn ?
-            <UserPage /> : 
+            <UserPage currentUser={this.state.currentUser}/> : 
                 <form onSubmit={this.login}>
                     <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
                     <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
