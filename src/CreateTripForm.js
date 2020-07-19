@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import { Form } from "react-bootstrap";
+// import { Form } from "react-bootstrap";
+import DateRangePicker from '@wojtekmaj/react-daterange-picker'
+import 'react-calendar/dist/Calendar.css';
 
 export default class CreateTripForm extends Component {
-    state ={
+  constructor(props){
+    super(props)
+    this.state ={
         trip_id: null,
         user_id:"",
         name: '',
         location: '',
         description: '',
-        start_date: "",
-        end_date: "",
+        date: [new Date(), new Date()],
     }
+  }
     componentDidMount() {
         this.setState({
           user_id: this.props.currentUser.id,
@@ -24,27 +28,28 @@ export default class CreateTripForm extends Component {
             [event.target.name]: event.target.value
         })
     }
+    onChange = (date) => {
+      this.setState({ date })
+    }
 
     addTrip = (event) => {
         event.preventDefault();
         const trip = {
-          trip_id: this.state.trip_id,
-          username: this.state.username,
           name: this.state.name,
-          loaction: this.state.location,
-          start_date: this.state.start_date,
-          end_date: this.state.end_date,
+          location: this.state.location,
+          description: this.state.description,
+          date: this.state.date
         
         };
+        console.log(trip)
     
         this.props.handleAddTrip(trip);
         
         this.setState({
           name: "",
-          price: "",
+          location: "",
           description: "",
-          link: "",
-          recipient: "",
+          date: "",
         });
        
       };
@@ -57,20 +62,19 @@ export default class CreateTripForm extends Component {
                 {/* <button id="cancelEdit" onClick={() => console.log()}>Cancel</button> */}
 
           <form>
-            <Form.Group>
-             Trip
-              <Form.Control
+          <label>
+             Trip Name
+              <input
               type="text"
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
-              >  
-              </Form.Control>
-            </Form.Group>
+             />  
+             </label>
             <label>
               <span>Location</span>
               <input
-                type="number"
+                type="text"
                 name="location"
                 value={this.state.location}
                 onChange={this.handleChange}
@@ -86,7 +90,14 @@ export default class CreateTripForm extends Component {
               />
             </label>
             
-              {/* Calendar */}
+            <div>
+                <DateRangePicker
+                    name="date"
+                    onChange={this.onChange}
+                    value={this.state.date}
+
+                />
+            </div>
            
           </form>
           <button className='button-primary' onClick={this.addTrip}>Add Trip</button>

@@ -7,7 +7,8 @@ export default class CreateTrip extends Component {
             <div>
                 <CreateTripForm 
                 currentUser={this.props.currentUser}
-                routerProps={this.props.routerProps}/>
+                routerProps={this.props.routerProps}
+                handleAddTrip={()=>this.props.handleAddTrip}/>
             </div>
         )
     }

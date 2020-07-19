@@ -1,57 +1,83 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import SignUp from './SignUp'
-import Login from './Login'
-import Home from './Home'
-import UserPage from './UserPage'
-import CreateTrip from './CreateTrip'
-import AddGear from './AddGear'
-import Trip from './Trip'
-import Gear from './Gear'
-
+import Home from './Home';
+import Login from './Login';
+import SignUp from './SignUp';
+import UserPage from './UserPage';
+import CreateTrip from './CreateTrip';
+import AddGear from './AddGear';
+import Trip from './Trip';
+import Gear from './Gear';
+import NotFound from './NotFound';
 import {
-  BrowserRouter,
   Switch,
   Route,
-  Link,
-  useHistory,
-  Redirect
+  withRouter
 } from "react-router-dom";
-import CreateTripForm from './CreateTripForm';
+import PrivateRoute from "./PrivateRoute";
 
 
 class App extends Component {
-  state = {
-    auth: { currentUser: {} },
-  };
+  constructor(props) {
+    super(props);
 
-  handleLogin = (data) => {
-    const currentUser = { currentUser: data.user };
-    this.setState({ auth: currentUser });
+    this.state = {
+      currentUser: JSON.parse(localStorage.getItem("currentUser")) || {}
+    }
+  }
+
+  handleLogin = (user) => {
+    const currentUser = { ...user };
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    this.setState({ ...this.state, currentUser }, () => this.props.history.push(`/users/${user.id}`));
   };
 
   handleLogout = () => {
-    this.setState({ auth: { currentUser: {} } });
-    localStorage.clear()
+    localStorage.clear();
+    const currentUser = { };
+    this.setState({ ...this.state, currentUser }, () => this.props.history.push(`/`));
   };
-
-
 
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <Route exact path='/login' component={Login}>
-            <Login />
+        <Switch>
+          <Route exact path='/login'>
+           <Login handleLogin={this.handleLogin} />
           </Route>
-          <Route exact path='/signup' component={SignUp}>
-            <SignUp />
+          <Route exact path='/signup'>
+           <SignUp handleLogin={this.handleLogin} />
           </Route>
 
+          <PrivateRoute
+            path={`/users/:userId`}
+            component={UserPage}
+            currentUser={this.state.currentUser}
+            handleLogout={this.handleLogout}
+          />
+          <PrivateRoute
+            path={"/createtrip"}
+            component={CreateTrip}
+            currentUser={this.state.currentUser}
+            handleLogout={this.handleLogout}
+          />
+
+          <PrivateRoute 
+            exact path='/addgear' 
+            component={AddGear} 
+          />
+            
+          <PrivateRoute 
+            exact path='/trip' 
+            component={Trip} 
+          />
+
+          <PrivateRoute
+            exact path='/gear'
+            component={Gear}
+          />
+            
           <Route
-            exact
-            path="/"
+            exact path="/"
             render={(routerProps) => {
               return (
                 <Home
@@ -61,55 +87,15 @@ class App extends Component {
               );
             }}
           />
-          {this.state.auth.currentUser.id ? (
-            <Switch>
 
-              <Route
-                path={`/users/${this.state.auth.currentUser.id}`}
-                render={(routerProps) => {
-                  return (
-                    <UserPage
-                      currentUser={this.state.auth.currentUser}
-                      handleLogout={this.handleLogout}
-                      routerProps={routerProps}
-                    />
-                  );
-                }}
-              />
-              <Route
-                path={"/createtrip"}
-                component={CreateTripForm}
-                render={(routerProps) => {
-                  return (
-                    <CreateTrip
-                      currentUser={this.state.auth.currentUser}
-                      handleLogout={this.handleLogout}
-                      routerProps={routerProps}
-                    />
-                  );
-                }}
-              />
+          <Route
+            path="/"
+            component={NotFound}
+          />
 
-              <Route exact path='/addgear'>
-                <AddGear />
-              </Route>
-
-              <Route exact path='/trip'>
-                <Trip />
-              </Route>
-
-              <Route exact path='/gear'>
-                <Gear />
-              </Route>
-
-
-            </Switch>) : (
-              <Redirect to="/" />
-            )}
-        </BrowserRouter>
-      </div>
+        </Switch>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

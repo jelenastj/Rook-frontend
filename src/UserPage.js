@@ -5,50 +5,64 @@ import CreateTrip from './CreateTrip'
 export default class UserPage extends Component {
 
     state = {
-        trips:[]
-      };
-    
-      componentDidMount() {
-        
-        const user_id = this.props.currentUser.id;
-        console.log(user_id)
-        fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-          .then((response) => response.json())
-          .then((data) => 
-           console.log(data))
-}
-        
-  
+        trips: []
+    };
 
+    componentDidMount() {
+        const user_id = this.props.currentUser.id;
+        //fetch(`http://localhost:3001/api/v1/trips/${user_id}`, {
+        fetch(`http://localhost:3000/api/v1/trips`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then((response) => response.json())
+            .then((data) =>
+                console.log(data))
+    }
+
+
+    handleAddTrip = (trip) => {
+        fetch("http://localhost:3000/api/v1/trips", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            body: JSON.stringify(trip),
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                this.setState({
+                    trips: [...this.state.trips]
+                });
+            });
+    };
 
     render() {
-        console.log(this.props.currentUser)
+        let currentUser = this.props.currentUser;
         return (
             <div className="user-page">
                 <div>
                     <NavBar />
-                  
-
-                <div className="welcome-user">
-                    Hello {this.props.currentUser}, your next trip is:
+                    <CreateTrip handleAddTrip={this.handleAddTrip} />
+                    <div className="welcome-user">
+                        Hello {currentUser.username}, your next trip is:
                  </div>
 
-                <div className="next-trip">
-                    {this.props.currentUser.trips}
-                </div>
+                    <div className="next-trip">
+                        {this.props.currentUser.trips}
+                    </div>
 
-                {/* <div className="total-trips">
+                    {/* <div className="total-trips">
                     You have {totaltrips} trips!
                 </div> */}
-                     <Link to="/createtrip" className="link-to-trip" >Add Trip</Link>
+                    <Link to="/createtrip" className="link-to-trip" >Add Trip</Link>
                 </div>
             </div>
-            
+
 
         )
     }
