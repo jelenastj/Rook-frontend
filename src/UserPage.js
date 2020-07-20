@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NavBar from './NavBar'
 import { Link } from "react-router-dom";
 import CreateTrip from './CreateTrip'
+import Trip from './Trip'
 export default class UserPage extends Component {
 
     state = {
@@ -10,21 +11,21 @@ export default class UserPage extends Component {
 
     componentDidMount() {
         const user_id = this.props.currentUser.id;
-        //fetch(`http://localhost:3001/api/v1/trips/${user_id}`, {
-        fetch(`http://localhost:3000/api/v1/trips`, {
+        fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
             .then((response) => response.json())
-            .then((data) =>
-                console.log(data))
+            .then((trips) =>
+                this.setState({ trips }))
     }
 
 
     handleAddTrip = (trip) => {
-        fetch("http://localhost:3000/api/v1/trips", {
+        const user_id = this.props.currentUser.id;
+        fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,7 +35,7 @@ export default class UserPage extends Component {
             body: JSON.stringify(trip),
         })
             .then((response) => response.json())
-            .then((result) => {
+            .then((trips) => {
                 this.setState({
                     trips: [...this.state.trips]
                 });
@@ -42,23 +43,33 @@ export default class UserPage extends Component {
     };
 
     render() {
+        console.log(this.state.trips)
         let currentUser = this.props.currentUser;
+        let total = this.state.trips.length
+        // console.log(this.state.trips)
         return (
             <div className="user-page">
                 <div>
-                    <NavBar />
-                    <CreateTrip handleAddTrip={this.handleAddTrip} />
+                    <NavBar
+                        currentUser={this.props.currentUser}
+                        handleLogout={this.props.handleLogout}
+                        routerProps={this.props.routerProps}
+                    />
                     <div className="welcome-user">
-                        Hello {currentUser.username}, your next trip is:
-                 </div>
-
-                    <div className="next-trip">
-                        {this.props.currentUser.trips}
+                        Hello {currentUser.username}, your next trip is: {this.state.trips.location}
                     </div>
 
-                    {/* <div className="total-trips">
-                    You have {totaltrips} trips!
-                </div> */}
+                    {/* <div className="next-trip">
+                         {this.props.currentUser.trips.map((trip) => {
+                           return(
+                           <Trip trip={trip.location}/>)
+                        })} 
+                    </div> */}
+
+                    <div className="total-trips">
+                        You have {total}trips!
+
+                </div>
                     <Link to="/createtrip" className="link-to-trip" >Add Trip</Link>
                 </div>
             </div>

@@ -15,12 +15,6 @@ export default class CreateTripForm extends Component {
         date: [new Date(), new Date()],
     }
   }
-    componentDidMount() {
-        this.setState({
-          user_id: this.props.currentUser.id,
-          
-        });
-      }
       
     
     handleChange= (event) => {
@@ -100,7 +94,7 @@ export default class CreateTripForm extends Component {
             </div>
            
           </form>
-          <button className='button-primary' onClick={this.addTrip}>Add Trip</button>
+          <button className='button-primary' onClick={this.addTrip}>Add</button>
         </div>
     );
   }

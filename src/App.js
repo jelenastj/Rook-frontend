@@ -64,16 +64,22 @@ class App extends Component {
           <PrivateRoute 
             exact path='/addgear' 
             component={AddGear} 
+            currentUser={this.state.currentUser}
+            handleLogout={this.handleLogout}
           />
             
           <PrivateRoute 
             exact path='/trip' 
             component={Trip} 
+            currentUser={this.state.currentUser}
+            handleLogout={this.handleLogout}
           />
 
           <PrivateRoute
             exact path='/gear'
             component={Gear}
+            currentUser={this.state.currentUser}
+            handleLogout={this.handleLogout}
           />
             
           <Route
