@@ -20,7 +20,6 @@ export default class CreateTripForm extends Component {
     })
   }
   onChange = (date) => {
-    // console.log(date)
     this.setState({ date })
   }
 
@@ -47,8 +46,6 @@ export default class CreateTripForm extends Component {
       })
     // this.props.handleAddTrip(trip);
 
-
-
     this.setState({
       location: "",
       description: "",
@@ -65,15 +62,6 @@ export default class CreateTripForm extends Component {
         {/* <button id="cancelEdit" onClick={() => console.log()}>Cancel</button> */}
 
         <form>
-          {/* <label>
-             Trip Name
-              <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-             />  
-             </label> */}
           <label>
             <span>Location</span>
             <input

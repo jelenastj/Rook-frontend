@@ -3,9 +3,10 @@ import CreateTrip from "./CreateTrip"
 
 export default class TripCollection extends Component {
     render() {
+        console.log(this.props.trips)
         return (
             <div>
-                <CreateTrip handleAddTrip={this.handleAddTrip}/>
+                {this.props.trips.location}
                 
             </div>
         )

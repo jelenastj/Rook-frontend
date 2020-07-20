@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Login extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             username: "",
@@ -11,7 +11,7 @@ class Login extends Component {
 
     handleChange = (event) => {
         const { name, value } = event.target
-        
+
         this.setState({
             [name]: value
         })
@@ -21,16 +21,16 @@ class Login extends Component {
         event.preventDefault();
         event.target.reset();
 
-        const {username, password} = this.state;
+        const { username, password } = this.state;
 
-        const user = {username, password};
+        const user = { username, password };
         fetch("http://localhost:3000/api/v1/login", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({user})
+            body: JSON.stringify({ user })
         })
             .then(r => r.json())
             .then(response => {

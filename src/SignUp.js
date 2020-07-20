@@ -46,8 +46,7 @@ class SignUp extends Component {
                     this.props.handleLogin(response.user);
                 }
             })
-
-    }
+        }
     
     render() {
         return (
