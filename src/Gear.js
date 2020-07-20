@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar'
-import GearItem from './GearItem';
+import GearCollection from './GearCollection';
 
 export default class Gear extends Component {
     render() {
@@ -11,7 +11,7 @@ export default class Gear extends Component {
                         currentUser={this.props.currentUser}
                         handleLogout={this.props.handleLogout}
                         routerProps={this.props.routerProps}/>
-                    <GearItem />
+                    <GearCollection />
                 </div>
             </div>
         )

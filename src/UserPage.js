@@ -9,41 +9,41 @@ export default class UserPage extends Component {
         trips: []
     };
 
-    componentDidMount() {
-        const user_id = this.props.currentUser.id;
-        fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-            .then((response) => response.json())
-            .then((trips) =>
-                this.setState({ trips }))
-    }
+    // componentDidMount() {
+    //     const user_id = this.props.currentUser.id;
+    //     fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Authorization': `Bearer ${localStorage.getItem('token')}`
+    //         }
+    //     })
+    //         .then((response) => response.json())
+    //         .then((trips) =>
+    //             this.setState({ trips }))
+    // }
 
 
-    handleAddTrip = (trip) => {
-        const user_id = this.props.currentUser.id;
-        fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-            body: JSON.stringify(trip),
-        })
-            .then((response) => response.json())
-            .then((trips) => {
-                this.setState({
-                    trips: [...this.state.trips]
-                });
-            });
-    };
+    // handleAddTrip = (trip) => {
+    //     const user_id = this.props.currentUser.id;
+    //     fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //             Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //         },
+    //         body: JSON.stringify(trip),
+    //     })
+    //         .then((response) => response.json())
+    //         .then((trips) => {
+    //             this.setState({
+    //                 trips: [...this.state.trips]
+    //             });
+    //         });
+    // };
 
     render() {
-        console.log(this.state.trips)
+        console.log(this.props.currentUser)
         let currentUser = this.props.currentUser;
         let total = this.state.trips.length
         // console.log(this.state.trips)
@@ -71,7 +71,10 @@ export default class UserPage extends Component {
 
                 </div>
                     <Link to="/createtrip" className="link-to-trip" >Add Trip</Link>
+                    {/* <CreateTrip /> */}
                 </div>
+
+
             </div>
 
 

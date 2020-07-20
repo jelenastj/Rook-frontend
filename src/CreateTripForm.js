@@ -8,15 +8,12 @@ export default class CreateTripForm extends Component {
     super(props)
     this.state ={
         trip_id: null,
-        user_id:"",
-        name: '',
         location: '',
         description: '',
         date: [new Date(), new Date()],
     }
   }
       
-    
     handleChange= (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -29,18 +26,23 @@ export default class CreateTripForm extends Component {
     addTrip = (event) => {
         event.preventDefault();
         const trip = {
-          name: this.state.name,
           location: this.state.location,
           description: this.state.description,
           date: this.state.date
-        
-        };
-        console.log(trip)
-    
+        }
+        fetch(`http://localhost:3000/api/v1/trips`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            body: JSON.stringify(trip),
+        })
         this.props.handleAddTrip(trip);
         
+        
         this.setState({
-          name: "",
           location: "",
           description: "",
           date: "",
@@ -56,7 +58,7 @@ export default class CreateTripForm extends Component {
                 {/* <button id="cancelEdit" onClick={() => console.log()}>Cancel</button> */}
 
           <form>
-          <label>
+          {/* <label>
              Trip Name
               <input
               type="text"
@@ -64,7 +66,7 @@ export default class CreateTripForm extends Component {
               value={this.state.name}
               onChange={this.handleChange}
              />  
-             </label>
+             </label> */}
             <label>
               <span>Location</span>
               <input
