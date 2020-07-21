@@ -9,18 +9,6 @@ export default class UserPage extends Component {
         trips: []
     };
 
-    // componentDidMount() {
-    //     const user_id = this.props.currentUser.id;
-    //     fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Authorization': `Bearer ${localStorage.getItem('token')}`
-    //         }
-    //     })
-    //         .then((response) => response.json())
-    //         .then((trips) =>
-    //             this.setState({ trips }))
-    // }
 
 
     

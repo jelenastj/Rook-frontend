@@ -13,7 +13,6 @@ export default class Trip extends Component {
             gears: [],
         }
     }
-
     componentDidMount() {
         const user_id = this.props.currentUser.id;
         fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
@@ -46,25 +45,6 @@ export default class Trip extends Component {
     //             this.setState({ gears }))
     // }
 
-
-    // handleAddGear = (gear) => {
-    //     const user_id = this.props.currentUser.id;
-    //     fetch(`http://localhost:3000/api/v1/gears/${user_id}`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: "application/json",
-    //             Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //         },
-    //         body: JSON.stringify(gear),
-    //     })
-    //         .then((response) => response.json())
-    //         .then((gears) => {
-    //             this.setState({
-    //                 gears: [...this.state.gears]
-    //             });
-    //         });
-    // };
 
 
 

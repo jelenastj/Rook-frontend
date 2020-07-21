@@ -22,8 +22,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentUser: JSON.parse(localStorage.getItem("currentUser")) || {}
+      currentUser: JSON.parse(localStorage.getItem("currentUser")) || {},
+      trips: [],
+      gears: []
     }
+  }
+  componentDidMount = () => {
+    fetch('http://localhost:3000/api/v1/trips').then(r => r.json()).then(trips => this.setState({ trips }))
   }
 
   handleLogin = (user) => {
@@ -34,72 +39,82 @@ class App extends Component {
 
   handleLogout = () => {
     localStorage.clear();
-    const currentUser = { };
+    const currentUser = {};
     this.setState({ ...this.state, currentUser }, () => this.props.history.push(`/`));
   };
 
+ 
+
+  addGear = (gear) => {
+    this.setState({
+      gears: [...this.state.gears, gear]
+    });
+  }
+
   render() {
     return (
-        <Switch>
-          <Route exact path='/login'>
-           <Login handleLogin={this.handleLogin} />
-          </Route>
-          <Route exact path='/signup'>
-           <SignUp handleLogin={this.handleLogin} />
-          </Route>
+      <Switch>
+        <Route exact path='/login'>
+          <Login handleLogin={this.handleLogin} />
+        </Route>
+        <Route exact path='/signup'>
+          <SignUp handleLogin={this.handleLogin} />
+        </Route>
 
-          <PrivateRoute
-            path={`/users/:userId`}
-            component={UserPage}
-            currentUser={this.state.currentUser}
-            handleLogout={this.handleLogout}
-          />
-          <PrivateRoute
-            path={"/createtrip"}
-            component={CreateTrip}
-            currentUser={this.state.currentUser}
-            handleLogout={this.handleLogout}
-          />
+        <PrivateRoute
+          path={`/users/:userId`}
+          component={UserPage}
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
+        <PrivateRoute
+          path={"/createtrip"}
+          component={CreateTrip}
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
 
-          <PrivateRoute 
-            exact path='/addgear' 
-            component={AddGear} 
-            currentUser={this.state.currentUser}
-            handleLogout={this.handleLogout}
-          />
-            
-          <PrivateRoute 
-            exact path='/trip' 
-            component={Trip} 
-            currentUser={this.state.currentUser}
-            handleLogout={this.handleLogout}
-          />
+        <PrivateRoute
+          exact path='/addgear'
+          component={AddGear}
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+          addGear={this.addGear}
+        />
 
-          <PrivateRoute
-            exact path='/gear'
-            component={Gear}
-            currentUser={this.state.currentUser}
-            handleLogout={this.handleLogout}
-          />
-            
-          <Route
-            exact path="/"
-            render={(routerProps) => {
-              return (
-                <Home
-                  handleLogin={this.handleLogin}
-                  routerProps={routerProps}
-                />
-              );
-            }}
-          />
+        <PrivateRoute
+          exact path='/trip'
+          component={Trip}
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+          trips={this.state.trips}
+        />
 
-          <Route
-            path="/"
-            component={NotFound}
-          />
+        <PrivateRoute
+          exact path='/gear'
+          component={Gear}
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
 
-        </Switch>
+        <Route
+          exact path="/"
+          render={(routerProps) => {
+            return (
+              <Home
+                handleLogin={this.handleLogin}
+                routerProps={routerProps}
+              />
+            );
+          }}
+        />
+
+        <Route
+          path="/"
+          component={NotFound}
+        />
+
+      </Switch>
     );
   }
 }
