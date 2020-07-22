@@ -5,7 +5,7 @@ const TripItem = (props) => {
         <div className="trips-top" key={props.trip.id}
         onClick={() => props.handleClick(props.trip)}>
            
-           <span> {props.trip.location}</span>
+           <h1 className="trips-top"> {props.trip.location}</h1>
             {/* <p>Notes: {props.trip.notes}</p>
             <p>Start Date: {props.trip.start_date}</p>
             <p>End Date: {props.trip.end_date}</p> */}

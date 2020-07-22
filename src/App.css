@@ -87,26 +87,60 @@
 
 .trip-layout{
   display: flex;
-flex-direction: row;
-margin: 10%;
+  flex-direction: row;
+  margin: 10%;
  
 
 }
-.trips-top{
-  
-  display: inline;
-  margin: 0 1em 0 1em;
-align-items: center;}
+
 
 .trip-current {
-  margin: 20px;
-  padding: 30px;
+  /* margin: 20px;
+  padding: 30px; */
+  width: 400px;
 }
 
 .single-gear{
   border: #282c34;
   border-style: solid;
   margin: 10px;
+}
+.single-trip {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+}
+.trips-top{
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 0.3em 0 0.3em;
+  color: #FFCD28;
+  font-size: 2em;
+  text-transform: uppercase;
+  cursor: pointer;
+ 
+}
+
+
+.add-gear{
+  margin: 20px;
+  padding-top: 20px;
+  width: 50%;
+  position: relative;
+  left: 20%;
+
+};
+
+.h1{
+ font-style: italic;
+}
+.gear-collection{
+  position: relative;
+  /* left: 300px; */
+  width: 300px;
+}
+.current-trip-title {
+  font-size: 30px;
 }
 /* ul.horizontal,
 ul.horizontal li {

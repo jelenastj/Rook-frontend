@@ -3,7 +3,7 @@ import React from 'react'
 const TripCurrent = (props)=> {
     return (
         <div>
-            <h3>Current Trip</h3>
+            <div className="current-trip-title">Current Trip</div>
             <p>{props.currentTrip.location}</p>
             <p>Date: {props.currentTrip.start_date}- <p>{props.currentTrip.start_date}</p>`</p> 
         </div>

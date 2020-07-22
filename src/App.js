@@ -109,7 +109,7 @@ class App extends Component {
           handleLogout={this.handleLogout}
         />
 
-        <PrivateRoute
+        <PrivateRoute 
           exact path='/addgear'
           component={AddGear}
           currentUser={this.state.currentUser}
@@ -129,7 +129,7 @@ class App extends Component {
           deleteGear={this.deleteGear}
         />
 
-        <PrivateRoute
+        <PrivateRoute 
           exact path='/gear'
           component={Gear}
           currentUser={this.state.currentUser}

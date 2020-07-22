@@ -8,7 +8,7 @@ export default class TripCollection extends Component {
         const id = this.props.currentUser.id;
         const trips = this.props.trips.filter((trip) => trip.user_id === id)
         return (
-            <div>
+            <div className='single-trip'>
                 {trips.map((trip) => <TripItem key={trip.id} trip={trip} handleClick= {this.props.handleClick} /> 
                 )}
 

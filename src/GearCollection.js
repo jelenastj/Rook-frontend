@@ -8,7 +8,7 @@ export default class GearCollection extends Component {
         const id = this.props.currentUser.id;
         const gears = this.props.gears.filter((gear) => gear.user_id === id)
         return (
-            <div>
+            <div className='gear-collection'>
                 {gears.map((gear) => <GearItem key={gear.id} gear={gear} handleClick= {this.props.handleClick} deleteGear= {this.props.deleteGear} />
                 )}
 
