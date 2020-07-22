@@ -66,7 +66,8 @@ export default class Trip extends Component {
                     </div>
                     <GearCollection
                         currentUser={this.props.currentUser}
-                        gears={this.props.gears} />
+                        gears={this.props.gears}
+                        handleClick={this.props.addToGearPack} />
                     <GearPacked 
                     currentUser={this.props.currentUser}
                     enlistedgears={this.props.enlistedgears}

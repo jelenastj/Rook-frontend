@@ -2,14 +2,12 @@ import React from 'react';
 
 const GearItem = (props) => {
     return (
-        <div  className="single-gear">
-        {/* <div className="single-gear" key={props.gear.id}
-        onClick={() => props.handleClick(props.gear)}> */}
+        
+        <div className="single-gear" key={props.gear.id}
+        onClick={() => props.handleClick(props.gear)}>
             
-            <p>Name: {props.gear.name}</p>
-            <p>Brand: {props.gear.brand}</p>
-            <p>Notes: {props.gear.notes}</p>
-            <p>Link: {props.gear.url}</p>
+            <p>{props.gear.name} by {props.gear.brand}</p>
+            <p>{props.gear.notes}</p>
             <p>Weight: {props.gear.weight}</p>
             
             <button
@@ -19,7 +17,7 @@ const GearItem = (props) => {
                   props.deleteGear(props.gear)}
                 }
               >
-                x
+                Delete
               </button>
         </div>
     )

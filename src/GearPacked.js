@@ -5,9 +5,10 @@ import GearItem from './GearItem';
     return (
           <div className="gear-packed">
             
-              {/* <div>
-                {this.props.enlistedgears.map(gear => < GearItem key={gear.id} gear={gear} handleClick= {this.props.handleClick} deleteGear={this.props.deleteGear}/>)}
-              </div> */}
+              <div>
+               <h1>PACKED </h1>
+                {props.enlistedgears.map(gear => < GearItem key={gear.id} gear={gear} handleClick= {props.handleClick} deleteGear={props.deleteGear}/>)}
+              </div>
           </div>
       )
     }

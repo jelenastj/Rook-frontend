@@ -127,6 +127,7 @@ class App extends Component {
           enlistedgears={this.state.gears.filter(g => g.enlisted)} 
           handleClick={this.deleteFromGearPacked} 
           deleteGear={this.deleteGear}
+          addToGearPack={this.addToGearPack}
         />
 
         <PrivateRoute 
