@@ -9,10 +9,6 @@ export default class UserPage extends Component {
         trips: []
     };
 
-
-
-    
-
     render() {
         console.log(this.props.currentUser)
         let currentUser = this.props.currentUser;
@@ -42,7 +38,6 @@ export default class UserPage extends Component {
 
                 </div>
                     <Link to="/createtrip" className="link-to-trip" >Add Trip</Link>
-                    {/* <CreateTrip /> */}
                 </div>
 
 

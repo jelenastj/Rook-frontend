@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import TripItem from './TripItem'
 
 export default class TripCollection extends Component {
+    componentDidMount() { console.log(this.props.trips) }
+
     render() {
-        console.log(this.props.trips)
+        const id = this.props.currentUser.id;
+        const trips = this.props.trips.filter((trip) => trip.user_id === id)
         return (
             <div>
-                {/* {this.props.trips.map((trip)=>{
-                   return <TripItem key ={trip.id} trip={trip}/>
-                })} */}
-                
+                {trips.map((trip) => <TripItem key={trip.id} trip={trip} /> 
+                )}
+
             </div>
         )
     }

@@ -23,12 +23,8 @@ class App extends Component {
 
     this.state = {
       currentUser: JSON.parse(localStorage.getItem("currentUser")) || {},
-      trips: [],
       gears: []
     }
-  }
-  componentDidMount = () => {
-    fetch('http://localhost:3000/api/v1/trips').then(r => r.json()).then(trips => this.setState({ trips }))
   }
 
   handleLogin = (user) => {
@@ -43,7 +39,17 @@ class App extends Component {
     this.setState({ ...this.state, currentUser }, () => this.props.history.push(`/`));
   };
 
- 
+ componentDidMount() {
+        fetch(`http://localhost:3000/api/v1/gears`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then((response) => response.json())
+            .then((gears) =>
+              this.setState({gears}))
+    }
 
   addGear = (gear) => {
     this.setState({
@@ -51,7 +57,36 @@ class App extends Component {
     });
   }
 
+  addToGearPack = (g) => {
+    this.setState({
+      gears: this.state.gears.map(gear => {
+        if (gear === g) {
+          gear.enlisted = true
+        }
+        return gear
+      })
+    })
+  }
+
+  deleteFromGearPacked =(g)=>{
+    this.setState({
+      gears: this.state.gears.map(gear => {
+        if (gear === g) {
+          gear.enlisted = false
+        }
+        return gear
+      })
+    })
+  }
+
+  deleteGear = (gear) => {
+    this.setState({
+      gears: [...this.state.gears.filter((e) => e.id !== gear.id)],
+    });
+  }
+
   render() {
+    console.log(this.state.gears)
     return (
       <Switch>
         <Route exact path='/login'>
@@ -87,7 +122,11 @@ class App extends Component {
           component={Trip}
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
-          trips={this.state.trips}
+          // trips={this.state.trips}
+          gears={this.state.gears}
+          enlistedgears={this.state.gears.filter(g => g.enlisted)} 
+          handleClick={this.deleteFromGearPacked} 
+          deleteGear={this.deleteGear}
         />
 
         <PrivateRoute
@@ -95,6 +134,9 @@ class App extends Component {
           component={Gear}
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
+          gears={this.state.gears}
+          handleClick={this.addToGearPack} 
+          deleteGear={this.deleteGear}
         />
 
         <Route

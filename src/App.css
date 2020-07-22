@@ -84,3 +84,51 @@
   height: 100vh;
   padding: 5%
 }
+
+.trip-layout{
+  display: flex;
+flex-direction: row;
+margin: 10%;
+ 
+
+}
+.trips-top{
+  
+  display: inline;
+  margin: 0 1em 0 1em;
+align-items: center;}
+
+.trip-current {
+  margin: 20px;
+  padding: 30px;
+}
+
+.single-gear{
+  border: #282c34;
+  border-style: solid;
+  margin: 10px;
+}
+/* ul.horizontal,
+ul.horizontal li {
+    margin: 0;
+    padding: 0;
+}
+ul.horizontal {
+    list-style-type: none;
+    width: 400px;
+    background: whiteSmoke;
+    overflow: auto;
+    margin: 0 auto;
+}
+ul.horizontal li {
+  width: 24%;
+  margin: 0 0 2% 1%;
+  float: left;
+    width: 99px;
+    height: 99px;
+    margin: 0 1px 1px 0;
+    text-align: center;
+    background-color: gray;
+    color: white;
+} */
+

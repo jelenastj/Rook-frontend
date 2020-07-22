@@ -4,10 +4,15 @@ import TripCollection from './TripCollection';
 import GearCollection from "./GearCollection"
 import UserPage from './UserPage';
 import CreateTrip from './CreateTrip';
+import TripCurrent from "./TripCurrent"
+import TripItemTop from "./TripsItemTop"
+import GearPacked from './GearPacked';
+
+
 
 export default class Trip extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             trips: [],
             gears: [],
@@ -15,7 +20,7 @@ export default class Trip extends Component {
     }
     componentDidMount() {
         const user_id = this.props.currentUser.id;
-        fetch(`http://localhost:3000/api/v1/trips/${user_id}`, {
+        fetch(`http://localhost:3000/api/v1/trips`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -28,42 +33,44 @@ export default class Trip extends Component {
 
 
     handleAddTrip = (trip) => {
-                this.setState({
-                    trips: [...this.state.trips]
-                });
+        this.setState({
+            trips: [...this.state.trips]
+        });
     };
-    // componentDidMount() {
-    //     const user_id = this.props.currentUser.id;
-    //     fetch(`http://localhost:3000/api/v1/gears/${user_id}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Authorization': `Bearer ${localStorage.getItem('token')}`
-    //         }
-    //     })
-    //         .then((response) => response.json())
-    //         .then((gears) =>
-    //             this.setState({ gears }))
-    // }
+
 
 
 
 
     render() {
+        console.log(this.props.currentUser)
 
         return (
             <div className="trip-all">
-                <NavBar
+                    <NavBar
+                        currentUser={this.props.currentUser}
+                        handleLogout={this.props.handleLogout}
+                        routerProps={this.props.routerProps} />
+                        <div className={"trips-top"}>
+                    <TripCollection
+                        trips={this.state.trips}
+                        handleAddTrip={this.handleAddTrip}
+                        currentUser={this.props.currentUser} />
+                        </div>
+                <div className="trip-layout">
+                    <div className="trip-current">
+                    <TripCurrent />
+                    </div>
+                    <GearCollection
+                        currentUser={this.props.currentUser}
+                        gears={this.props.gears} />
+                    <GearPacked 
                     currentUser={this.props.currentUser}
-                    handleLogout={this.props.handleLogout}
-                    routerProps={this.props.routerProps} />
-                <TripCollection
-                    trips={this.state.trips}
-                    handleAddTrip={this.handleAddTrip} />
-                <GearCollection
-                    gears={this.state.gears}
-                    handleAddGear={this.handleAddGear} />
-                    {/* <UserPage /> */}
-                    {/* <CreateTrip /> */}
+                    enlistedgears={this.props.enlistedgears}
+                    handleClick={this.props.handleClick}
+                    deleteGear={this.props.deleteGear}/>    
+                </div>
+
             </div>
 
         )
