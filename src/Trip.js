@@ -16,6 +16,7 @@ export default class Trip extends Component {
         this.state = {
             trips: [],
             gears: [],
+            currentTrip: ''
         }
     }
     componentDidMount() {
@@ -38,12 +39,13 @@ export default class Trip extends Component {
         });
     };
 
-
-
+    currentTrip = (trip) => {
+    this.setState({currentTrip: trip})
+    }
 
 
     render() {
-        console.log(this.props.currentUser)
+        //console.log(this.state.currentTrip)
 
         return (
             <div className="trip-all">
@@ -55,11 +57,12 @@ export default class Trip extends Component {
                     <TripCollection
                         trips={this.state.trips}
                         handleAddTrip={this.handleAddTrip}
-                        currentUser={this.props.currentUser} />
+                        currentUser={this.props.currentUser}
+                        handleClick={this.currentTrip} />
                         </div>
                 <div className="trip-layout">
                     <div className="trip-current">
-                    <TripCurrent />
+                    <TripCurrent currentTrip={this.state.currentTrip} />
                     </div>
                     <GearCollection
                         currentUser={this.props.currentUser}

@@ -2,7 +2,8 @@ import React from 'react';
 
 const TripItem = (props) => {
     return (
-        <div className="trips-top" >
+        <div className="trips-top" key={props.trip.id}
+        onClick={() => props.handleClick(props.trip)}>
            
            <span> {props.trip.location}</span>
             {/* <p>Notes: {props.trip.notes}</p>

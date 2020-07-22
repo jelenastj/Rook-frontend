@@ -2,8 +2,9 @@ import React from 'react';
 
 const GearItem = (props) => {
     return (
-        <div className="single-gear" key={props.gear.id}
-        onClick={() => props.handleClick(props.gear)}>
+        <div  className="single-gear">
+        {/* <div className="single-gear" key={props.gear.id}
+        onClick={() => props.handleClick(props.gear)}> */}
             
             <p>Name: {props.gear.name}</p>
             <p>Brand: {props.gear.brand}</p>
