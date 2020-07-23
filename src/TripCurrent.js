@@ -5,8 +5,9 @@ const TripCurrent = (props)=> {
         <div>
             <div className="current-trip-title">
                 CURRENT TRIP</div>
-            <p>{props.currentTrip.location}</p>
-            <p>Date: {props.currentTrip.start_date}- <p>{props.currentTrip.start_date}</p>`</p> 
+            <p>{props.showCurrentTrip.location}</p>
+            <p>Date: 
+                {props.showCurrentTrip.start_date}-{props.showCurrentTrip.start_date}</p> 
         </div>
     )
 }

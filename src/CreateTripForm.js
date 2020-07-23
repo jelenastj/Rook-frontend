@@ -85,6 +85,7 @@ export default class CreateTripForm extends Component {
           <div>
             <DateRangePicker
               name="date"
+              format='yyyy-MM-dd'
               onChange={this.onChange}
               value={this.state.date}
 

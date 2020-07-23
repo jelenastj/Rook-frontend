@@ -23,7 +23,10 @@ class App extends Component {
 
     this.state = {
       currentUser: JSON.parse(localStorage.getItem("currentUser")) || {},
-      gears: []
+      gears: [],
+      currentTrip: {},
+      tripgears: []
+
     }
   }
 
@@ -39,17 +42,17 @@ class App extends Component {
     this.setState({ ...this.state, currentUser }, () => this.props.history.push(`/`));
   };
 
- componentDidMount() {
-        fetch(`http://localhost:3000/api/v1/gears`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-            .then((response) => response.json())
-            .then((gears) =>
-              this.setState({gears}))
-    }
+  componentDidMount() {
+    fetch(`http://localhost:3000/api/v1/gears`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then((response) => response.json())
+      .then((gears) =>
+        this.setState({ gears }))
+  }
 
   addGear = (gear) => {
     this.setState({
@@ -57,18 +60,42 @@ class App extends Component {
     });
   }
 
-  addToGearPack = (g) => {
-    this.setState({
-      gears: this.state.gears.map(gear => {
-        if (gear === g) {
-          gear.enlisted = true
-        }
-        return gear
-      })
-    })
+  currentTrip = (trip) => {
+    this.setState({ currentTrip: trip })
   }
 
-  deleteFromGearPacked =(g)=>{
+  addToGearPack = (gear) => {
+    const tripgear = {
+      trip_id: this.state.currentTrip.id,
+      gear_id: gear.id
+    }
+    fetch(` http://localhost:3000/api/v1/tripgears`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(tripgear),
+    }).then(r => r.json())
+      .then(data => {
+        console.log(data)
+      })
+  }
+  componentWillMount(){
+    fetch(`http://localhost:3000/api/v1/tripgears`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then((response) => response.json())
+      .then((tripgears) =>
+       this.setState({tripgears}))
+
+  }
+
+  deleteFromGearPacked = (g) => {
     this.setState({
       gears: this.state.gears.map(gear => {
         if (gear === g) {
@@ -109,7 +136,7 @@ class App extends Component {
           handleLogout={this.handleLogout}
         />
 
-        <PrivateRoute 
+        <PrivateRoute
           exact path='/addgear'
           component={AddGear}
           currentUser={this.state.currentUser}
@@ -124,19 +151,22 @@ class App extends Component {
           handleLogout={this.handleLogout}
           // trips={this.state.trips}
           gears={this.state.gears}
-          enlistedgears={this.state.gears.filter(g => g.enlisted)} 
-          handleClick={this.deleteFromGearPacked} 
+          enlistedgears={this.state.gears.filter(g => g.enlisted)}
+          handleClick={this.deleteFromGearPacked}
           deleteGear={this.deleteGear}
           addToGearPack={this.addToGearPack}
+          currentTrip={this.currentTrip}
+          showCurrentTrip={this.state.currentTrip}
+          tripgears ={this.state.tripgears}
         />
 
-        <PrivateRoute 
+        <PrivateRoute
           exact path='/gear'
           component={Gear}
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
           gears={this.state.gears}
-          handleClick={this.addToGearPack} 
+          handleClick={this.addToGearPack}
           deleteGear={this.deleteGear}
         />
 

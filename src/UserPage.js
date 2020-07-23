@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import NavBar from './NavBar'
 import { Link } from "react-router-dom";
-import CreateTrip from './CreateTrip'
-import Trip from './Trip'
 export default class UserPage extends Component {
 
     state = {

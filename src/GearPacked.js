@@ -7,7 +7,7 @@ import GearItem from './GearItem';
             
               <div>
                <h1>PACKED </h1>
-                {props.enlistedgears.map(gear => < GearItem key={gear.id} gear={gear} handleClick= {props.handleClick} deleteGear={props.deleteGear}/>)}
+                {/* {props.tripsgears.map(gear => < GearItem key={gear.id} gear={gear} handleClick= {props.handleClick} deleteGear={props.deleteGear}/>)} */}
               </div>
           </div>
       )
