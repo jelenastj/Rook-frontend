@@ -25,15 +25,13 @@ class App extends Component {
       currentUser: JSON.parse(localStorage.getItem("currentUser")) || {},
       gears: [],
       currentTrip: {},
-      showTrip: []
-
     }
   }
 
   handleLogin = (user) => {
     const currentUser = { ...user };
     localStorage.setItem("currentUser", JSON.stringify(user));
-    this.setState({ ...this.state, currentUser }, () => this.props.history.push(`/users/${user.id}`));
+    this.setState({ ...this.state, currentUser }, () => this.props.history.push("/userpage"));
   };
 
   handleLogout = () => {
@@ -61,7 +59,7 @@ class App extends Component {
   }
 
   setCurrentTrip = (trip) => {
-    this.setState({ currentTrip: trip })
+    // this.setState({ currentTrip: trip })
     this.getTrip(trip)
   }
 
@@ -92,8 +90,8 @@ class App extends Component {
       }
     })
       .then((response) => response.json())
-      .then((showTrip) =>
-       this.setState({showTrip}))
+      .then((currentTrip) =>
+       this.setState({currentTrip}))
 
   }
 
@@ -126,13 +124,13 @@ class App extends Component {
         </Route>
 
         <PrivateRoute
-          path={`/users/:userId`}
+          path="/userpage"
           component={UserPage}
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
         />
         <PrivateRoute
-          path={"/createtrip"}
+          path="/createtrip"
           component={CreateTrip}
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
@@ -151,15 +149,13 @@ class App extends Component {
           component={Trip}
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
-          // trips={this.state.trips}
           gears={this.state.gears}
-          // enlistedgears={this.state.gears.filter(g => g.enlisted)}
           handleClick={this.deleteFromGearPacked}
           deleteGear={this.deleteGear}
           addToGearPack={this.addToGearPack}
           setCurrentTrip={this.setCurrentTrip}
           showCurrentTrip={this.state.currentTrip}
-          showTrip ={this.state.showTrip}
+          // showTrip ={this.state.showTrip} get rid off the rest down the chain
         />
 
         <PrivateRoute

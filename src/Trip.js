@@ -12,8 +12,7 @@ export default class Trip extends Component {
         super(props)
         this.state = {
             trips: [],
-            gears: [],
-            currentTrip: {}
+            // gears: [],
         }
     }
     componentDidMount() {
@@ -54,15 +53,14 @@ export default class Trip extends Component {
                         trips={this.state.trips}
                         handleAddTrip={this.handleAddTrip}
                         currentUser={this.props.currentUser}
-                        handleClick={this.props.currentTrip}
-                        currentTrip={this.props.currentTrip} />
+                        handleClick={this.props.setCurrentTrip}
+                       
+                         />
                 </div>
                 <div className="trip-layout">
                     <div className="trip-current">
                         <TripCurrent
                             showCurrentTrip={this.props.showCurrentTrip}
-                            // enlistedgears={this.props.enlistedgears}
-                            showTrip={this.props.showTrip}
                         />
                     </div>
                     <GearCollection
@@ -72,11 +70,9 @@ export default class Trip extends Component {
                     <GearPacked
                         showCurrentTrip={this.props.showCurrentTrip}
                         currentUser={this.props.currentUser}
-                        //enlistedgears={this.props.enlistedgears}
                         handleClick={this.props.handleClick}
                         deleteGear={this.props.deleteGear}
-                        tripgears={this.props.tripgears} 
-                        currentTrip={this.state.currentTrip}/>
+                        />
                 </div>
 
             </div>

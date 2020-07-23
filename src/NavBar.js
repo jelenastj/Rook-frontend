@@ -10,10 +10,10 @@ class NavBar extends Component {
   render() {
     return (
       <div className='nav-bar'>
-        <NavLink exact path to="/logout">Log out</NavLink>
-        <NavLink exact path to="/gear"> Gear</NavLink>
-        <NavLink exact path to="/trip">Trips</NavLink>
-        <NavLink exact path to={`/users/:userId`}>Home</NavLink>
+        <NavLink to="/logout">Log out</NavLink>
+        <NavLink to="/gear"> Gear</NavLink>
+        <NavLink to="/trip">Trips</NavLink>
+        <NavLink to="/userpage">Home</NavLink>
 
       </div>
     );
