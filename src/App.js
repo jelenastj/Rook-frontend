@@ -25,7 +25,7 @@ class App extends Component {
       currentUser: JSON.parse(localStorage.getItem("currentUser")) || {},
       gears: [],
       currentTrip: {},
-      tripgears: []
+      showTrip: []
 
     }
   }
@@ -60,38 +60,40 @@ class App extends Component {
     });
   }
 
-  currentTrip = (trip) => {
+  setCurrentTrip = (trip) => {
     this.setState({ currentTrip: trip })
+    this.getTrip(trip)
   }
 
   addToGearPack = (gear) => {
-    const tripgear = {
-      trip_id: this.state.currentTrip.id,
-      gear_id: gear.id
-    }
-    fetch(` http://localhost:3000/api/v1/tripgears`, {
+    const trip_id = this.state.currentTrip.id
+    
+    fetch(` http://localhost:3000/api/v1/trips/${trip_id}/gears`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify(tripgear),
+      body: JSON.stringify(gear),
     }).then(r => r.json())
       .then(data => {
         console.log(data)
       })
   }
-  componentWillMount(){
-    fetch(`http://localhost:3000/api/v1/tripgears`, {
+
+  getTrip=(trip)=>{
+    // const trip_id = this.state.currentTrip.id
+    // console.log(this.state.currentTrip.id)
+    fetch(`http://localhost:3000/api/v1/trips/${trip.id}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     })
       .then((response) => response.json())
-      .then((tripgears) =>
-       this.setState({tripgears}))
+      .then((showTrip) =>
+       this.setState({showTrip}))
 
   }
 
@@ -151,13 +153,13 @@ class App extends Component {
           handleLogout={this.handleLogout}
           // trips={this.state.trips}
           gears={this.state.gears}
-          enlistedgears={this.state.gears.filter(g => g.enlisted)}
+          // enlistedgears={this.state.gears.filter(g => g.enlisted)}
           handleClick={this.deleteFromGearPacked}
           deleteGear={this.deleteGear}
           addToGearPack={this.addToGearPack}
-          currentTrip={this.currentTrip}
+          setCurrentTrip={this.setCurrentTrip}
           showCurrentTrip={this.state.currentTrip}
-          tripgears ={this.state.tripgears}
+          showTrip ={this.state.showTrip}
         />
 
         <PrivateRoute

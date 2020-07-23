@@ -7,7 +7,7 @@ const TripCurrent = (props)=> {
                 CURRENT TRIP</div>
             <p>{props.showCurrentTrip.location}</p>
             <p>Date: 
-                {props.showCurrentTrip.start_date}-{props.showCurrentTrip.start_date}</p> 
+                {props.showCurrentTrip.start_date}-{props.showCurrentTrip.end_date}</p> 
         </div>
     )
 }

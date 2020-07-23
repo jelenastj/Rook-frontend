@@ -17,6 +17,7 @@ export default class Trip extends Component {
         }
     }
     componentDidMount() {
+
         fetch(`http://localhost:3000/api/v1/trips`, {
             method: 'GET',
             headers: {
@@ -24,8 +25,11 @@ export default class Trip extends Component {
             }
         })
             .then((response) => response.json())
-            .then((trips) =>
-                this.setState({ trips }))
+            .then((trips) => {
+                this.setState({ trips })
+                console.log(trips)
+            })
+
     }
 
 
@@ -58,7 +62,7 @@ export default class Trip extends Component {
                         <TripCurrent
                             showCurrentTrip={this.props.showCurrentTrip}
                             // enlistedgears={this.props.enlistedgears}
-                            tripgears={this.props.tripgears}
+                            showTrip={this.props.showTrip}
                         />
                     </div>
                     <GearCollection
@@ -66,11 +70,13 @@ export default class Trip extends Component {
                         gears={this.props.gears}
                         handleClick={this.props.addToGearPack} />
                     <GearPacked
+                        showCurrentTrip={this.props.showCurrentTrip}
                         currentUser={this.props.currentUser}
                         //enlistedgears={this.props.enlistedgears}
                         handleClick={this.props.handleClick}
                         deleteGear={this.props.deleteGear}
-                        tripgears={this.props.tripgears} />
+                        tripgears={this.props.tripgears} 
+                        currentTrip={this.state.currentTrip}/>
                 </div>
 
             </div>

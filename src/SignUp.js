@@ -43,6 +43,7 @@ class SignUp extends Component {
             .then(r => r.json())
             .then(response => {
                 if (response.user) {
+                    localStorage.setItem("token", response.jwt);
                     this.props.handleLogin(response.user);
                 }
             })
