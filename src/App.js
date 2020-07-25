@@ -5,6 +5,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import UserPage from './UserPage';
 import CreateTrip from './CreateTrip';
+import EditTrip from './EditTrip';
 import AddGear from './AddGear';
 import Trip from './Trip';
 import Gear from './Gear';
@@ -129,6 +130,13 @@ class App extends Component {
           path="/createtrip"
           component={CreateTrip}
           currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
+        <PrivateRoute
+          path="/edittrip"
+          component={EditTrip}
+          currentUser={this.state.currentUser}
+          currentTrip={this.state.currentTrip}
           handleLogout={this.handleLogout}
         />
 

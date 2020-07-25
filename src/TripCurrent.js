@@ -1,17 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { withRouter } from "react-router-dom";
 
-const TripCurrent = (props)=> {
-    
-    return (
-        <div className="current-trip">
-            <div className="current-trip-title">
-                CURRENT TRIP</div>
-            <button className="edit-btn" onClick={()=> console.log('clicking')}>Edit</button>
-            <p>{props.showCurrentTrip.location}</p>
-            <p>Date: 
-                {props.showCurrentTrip.start_date}-{props.showCurrentTrip.end_date}
-            </p> 
-        </div>
-    )
+class TripCurrent extends React.Component {
+    render() {
+        return (
+            <div className="current-trip">
+                <div className="current-trip-title">
+                    CURRENT TRIP</div>
+                <button className="edit-btn" onClick={()=> this.props.history.push("/edittrip")}>Edit</button>
+                <p>{this.props.showCurrentTrip.location}</p>
+                <p>Date: 
+                    {this.props.showCurrentTrip.start_date}-{this.props.showCurrentTrip.end_date}
+                </p> 
+            </div>
+        )
+    }
 }
-export default TripCurrent;
+export default withRouter(TripCurrent);

@@ -4,14 +4,16 @@ import DateRangePicker from '@wojtekmaj/react-daterange-picker'
 import 'react-calendar/dist/Calendar.css';
 
 
-export default class TripEditForm extends Component {
+export default class EditTripForm extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+
+        console.log(this.props.currentTrip);
         this.state = {
-            trip_id: null,
-            location: '',
-            description: '',
-            date: [new Date(), new Date()],
+            trip_id: this.props.currentTrip.id,
+            location: this.props.currentTrip.location,
+            description: this.props.currentTrip.notes,
+            date: [new Date(this.props.currentTrip.start_date), new Date(this.props.currentTrip.end_date)] //[new Date(), new Date()],
         }
     }
 
@@ -24,12 +26,19 @@ export default class TripEditForm extends Component {
         this.setState({ date })
     }
 
-    editTrip = (trip) => {
-        fetch(`http://localhost:3000/api/v1/trips/${trip.id}`, {
-            method: 'GET',
+    editTrip = () => {
+        fetch(`http://localhost:3000/api/v1/trips/${this.state.trip_id}`, {
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
+            },
+            body: JSON.stringify({
+                user_id: this.props.currentUser.id,
+                location: this.state.location,
+                notes: this.state.description,
+                start_date: this.state.date[0],
+                end_date: this.state.date[1]
+            }),
         })
             .then((response) => response.json())
             .then((trip) =>
@@ -39,7 +48,7 @@ export default class TripEditForm extends Component {
                     notes: this.state.description,
                     start_date: this.state.date[0],
                     end_date: this.state.date[1]
-                }))
+                }, () => this.props.history.push("/trip")))
     }
 
     render() {
@@ -80,7 +89,7 @@ export default class TripEditForm extends Component {
                     </div>
 
                 </form>
-                <button className='button-primary' onClick={this.addTrip}>Save</button>
+                <button className='button-primary' onClick={this.editTrip}>Save</button>
             </div>
         );
     }
