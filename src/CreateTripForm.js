@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 // import { Form } from "react-bootstrap";
 import DateRangePicker from '@wojtekmaj/react-daterange-picker'
 import 'react-calendar/dist/Calendar.css';
+import { withRouter } from "react-router-dom";
 
-
-export default class CreateTripForm extends Component {
+class CreateTripForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -98,3 +98,5 @@ export default class CreateTripForm extends Component {
     );
   }
 }
+
+export default withRouter(CreateTripForm);

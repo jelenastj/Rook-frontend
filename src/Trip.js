@@ -24,7 +24,11 @@ export default class Trip extends Component {
         })
             .then((response) => response.json())
             .then((trips) => {
-                this.setState({ trips })
+                this.setState({ trips });
+                let userTrips = trips.filter((trip) => trip.user_id === this.props.currentUser.id);
+                if (userTrips && userTrips.length > 0) {
+                    this.props.setCurrentTrip(userTrips[0]);
+                }
 
             })
 
