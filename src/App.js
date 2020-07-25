@@ -59,7 +59,6 @@ class App extends Component {
   }
 
   setCurrentTrip = (trip) => {
-    // this.setState({ currentTrip: trip })
     this.getTrip(trip)
   }
 
@@ -81,8 +80,6 @@ class App extends Component {
   }
 
   getTrip=(trip)=>{
-    // const trip_id = this.state.currentTrip.id
-    // console.log(this.state.currentTrip.id)
     fetch(`http://localhost:3000/api/v1/trips/${trip.id}`, {
       method: 'GET',
       headers: {
@@ -148,13 +145,11 @@ class App extends Component {
           component={Trip}
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
-          gears={this.state.gears}
-          handleClick={this.deleteFromGearPacked}
-          deleteGear={this.deleteGear}
-          addToGearPack={this.addToGearPack}
           setCurrentTrip={this.setCurrentTrip}
           showCurrentTrip={this.state.currentTrip}
-          // showTrip ={this.state.showTrip} get rid off the rest down the chain
+          gears={this.state.gears}
+          addToGearPack={this.addToGearPack}
+          handleClick={this.deleteFromGearPacked}
         />
 
         <PrivateRoute
@@ -163,7 +158,7 @@ class App extends Component {
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
           gears={this.state.gears}
-          handleClick={this.addToGearPack}
+          // handleClick={this.addToGearPack}
           deleteGear={this.deleteGear}
         />
 

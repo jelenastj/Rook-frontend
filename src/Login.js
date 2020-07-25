@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
 
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -24,7 +25,7 @@ class Login extends Component {
         event.target.reset();
 
         const { username, password } = this.state;
-
+        
         const user = { username, password };
         fetch("http://localhost:3000/api/v1/login", {
             method: "POST",
@@ -43,8 +44,11 @@ class Login extends Component {
                 if (response.user) {
                     localStorage.setItem("token", response.jwt);
                     this.props.handleLogin(response.user);
+                    
                 }
             })
+           
+            
     }
 
 
@@ -53,8 +57,8 @@ render() {
         <div className="login-page">
         <div className="container">
             <h2>Please log into your account</h2>
-            <form className="form" action="#" onSubmit={this.login}>
-                <fieldset className="form-fieldset ui-input __first">
+            <form ref="myForm" className="form" action="/userpage" onSubmit={this.login}>
+                <fieldset  className="form-fieldset ui-input __first">
                     <input type="text" id="username" tabIndex="0" name="username" onChange={this.handleChange} />
                     <label htmlFor="username">
                     <span data-text="Username">Username</span>
@@ -67,7 +71,7 @@ render() {
                         <span data-text="New Password">New Password</span>
                         </label>
                 </fieldset>
-                    <div class="form-footer">
+                    <div className="form-footer">
                     <button className="btn" type="submit">Submit</button>
                     </div>
             </form>

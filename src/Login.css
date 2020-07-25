@@ -1,8 +1,5 @@
 
 
-
-
-
 .login-page {
   background-color: #363E4A;
   font-size: 16px;
@@ -43,10 +40,10 @@
 }
 
 .ui-input input {
-    border-top-style: hidden;
+  border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-    border-bottom: 9px solid yellow;
+  border-bottom: 9px solid yellow;
   background: none;
   padding: 16px 0 16px 0;
   font-size: 24px;

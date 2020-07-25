@@ -34,6 +34,7 @@ export default class AddGear extends Component {
             user_id: this.props.currentUser.id,
             weight: this.state.weight
             // retired: this.state.retired,
+            
         }
         fetch(`http://localhost:3000/api/v1/gears`, {
             method: "POST",
@@ -45,9 +46,7 @@ export default class AddGear extends Component {
             body: JSON.stringify(gear),
         }).then((response) => response.json())
             .then((gear) => { console.log(gear) })
-
-
-
+            
         this.setState({
             name: " ",
             brand: "",
@@ -58,7 +57,9 @@ export default class AddGear extends Component {
             user_id: '',
             weight: '',
             // retired: false
-        });
+            
+        },() => this.props.history.push("/trip"));
+
     };
     render() {
 

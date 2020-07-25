@@ -8,10 +8,8 @@ export default class UserPage extends Component {
     };
 
     render() {
-        console.log(this.props.currentUser)
         let currentUser = this.props.currentUser;
         let total = this.state.trips.length
-        // console.log(this.state.trips)
         return (
             <div className="user-page">
                 <div>

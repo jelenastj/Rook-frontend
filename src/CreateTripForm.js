@@ -51,7 +51,7 @@ export default class CreateTripForm extends Component {
       location: "",
       description: "",
       date: "",
-    });
+    },() => this.props.history.push("/userpage"));
 
   };
 

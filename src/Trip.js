@@ -12,7 +12,6 @@ export default class Trip extends Component {
         super(props)
         this.state = {
             trips: [],
-            // gears: [],
         }
     }
     componentDidMount() {
@@ -59,6 +58,7 @@ export default class Trip extends Component {
                     <div className="trip-current">
                         <TripCurrent
                             showCurrentTrip={this.props.showCurrentTrip}
+                            trips={this.state.trips}
                         />
                     </div>
                     <GearCollection
