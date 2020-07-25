@@ -26,7 +26,7 @@ export default class Trip extends Component {
             .then((response) => response.json())
             .then((trips) => {
                 this.setState({ trips })
-                console.log(trips)
+
             })
 
     }
@@ -39,9 +39,7 @@ export default class Trip extends Component {
     };
 
     render() {
-        //console.log(this.state.currentTrip)
-        // console.log(this.state.currentTrip.gears)
-        console.log(this.state.gears)
+    
         return (
             <div className="trip-all">
                 <NavBar

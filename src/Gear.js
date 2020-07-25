@@ -16,6 +16,7 @@ export default class Gear extends Component {
                         routerProps={this.props.routerProps} />
                         <Link to="/addgear" className="link-to-add-gear" >Add Gear</Link>
                     <GearCollection
+                        showDelete={true}
                         gears={this.props.gears}
                         currentUser={this.props.currentUser} 
                         handleAddGear={this.props.handleAddGear}

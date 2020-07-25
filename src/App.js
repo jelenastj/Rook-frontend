@@ -113,7 +113,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.gears)
     return (
       <Switch>
         <Route exact path='/login'>

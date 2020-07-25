@@ -11,7 +11,7 @@ export default class GearCollection extends Component {
         return (
             <div className='gear-collection'>
                 <h1>ALL GEAR</h1>
-                {gears.map((gear) => <GearItem key={gear.id} gear={gear} handleClick= {this.props.handleClick} deleteGear= {this.props.deleteGear} />
+                {gears.map((gear) => <GearItem key={gear.id} gear={gear} handleClick= {this.props.handleClick} deleteGear= {this.props.deleteGear} showDelete={this.props.showDelete}/>
                 )}
 
             </div>

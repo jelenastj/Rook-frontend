@@ -10,15 +10,18 @@ const GearItem = (props) => {
             <p>{props.gear.notes}</p>
             <p>Weight: {props.gear.weight}</p>
             
+            {props.showDelete
+            ?
             <button
-                className="ui mini red button"
-                onClick={(e) => {
-                  e.stopPropagation(); 
-                  props.deleteGear(props.gear)}
-                }
-              >
+            className="ui mini red button"
+            onClick={(e) => {
+              e.stopPropagation(); 
+              props.deleteGear(props.gear)}
+            }
+            >
                 Delete
               </button>
+          : null}
         </div>
     )
 }

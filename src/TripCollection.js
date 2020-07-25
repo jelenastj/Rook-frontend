@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import TripItem from './TripItem'
 
 export default class TripCollection extends Component {
-    componentDidMount() { console.log(this.props.trips) }
+   
 
     render() {
         const id = this.props.currentUser.id;

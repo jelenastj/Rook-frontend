@@ -9,7 +9,7 @@ const GearPacked = (props) => {
    
     const gears = props.showCurrentTrip.gears
       return gears && gears.map(gear => {
-        return <GearItem key={gear.id} gear={gear} handleClick={props.handleClick} deleteGear={props.deleteGear} />
+        return <GearItem key={Math.random()} gear={gear} handleClick={props.handleClick} deleteGear={props.deleteGear} />
       })
     }
 

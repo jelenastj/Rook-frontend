@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Login.css';
 
 class Login extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class Login extends Component {
             password: ""
         }
     }
+  
 
     handleChange = (event) => {
         const { name, value } = event.target
@@ -45,15 +47,34 @@ class Login extends Component {
             })
     }
 
-    render() {
-        return (
-            <form onSubmit={this.login}>
-                <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
-                <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
-                <button type="submit">Submit</button>
+
+render() {
+    return (
+        <div className="login-page">
+        <div className="container">
+            <h2>Please log into your account</h2>
+            <form className="form" action="#" onSubmit={this.login}>
+                <fieldset className="form-fieldset ui-input __first">
+                    <input type="text" id="username" tabIndex="0" name="username" onChange={this.handleChange} />
+                    <label htmlFor="username">
+                    <span data-text="Username">Username</span>
+                        </label>
+                </fieldset>
+                <fieldset className="form-fieldset ui-input __third">
+                    <input type="password" id="new-password" name="password"
+                        onChange={this.handleChange} />
+                    <label htmlFor="new-password">
+                        <span data-text="New Password">New Password</span>
+                        </label>
+                </fieldset>
+                    <div class="form-footer">
+                    <button className="btn" type="submit">Submit</button>
+                    </div>
             </form>
-        );
-    }
+        </div>
+        </div>
+    );
+}
 }
 
 export default Login;
