@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,16 +17,9 @@
   color: #61dafb;
 }
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-
+body {
+  font: 600 1.5em/1 'Raleway', sans-serif;
+}
 .home-panels {
   height: 100vh;
   width: 100vw;
@@ -47,22 +29,61 @@
   color: white;
 }
 
-
 .home-panel-1 {
   margin: auto;
   background-image: url("/images/andreas-gucklhorn-mawU2PoJWfU-unsplash.jpg")
 }
 
+
+.welcome-user{
+  font: 600 1.5em/1 'Raleway', sans-serif;
+    color: rgba(0,0,0,.5);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+}
+ span.welcome, span:after {
+  font-weight: 900;
+  color: #FFCD28;
+  white-space: nowrap;
+  display: inline-block;
+  position: relative;
+  letter-spacing: .1em;
+  padding: .2em 0 .25em 0;
+} 
+
+ span.welcome {
+  font-size: 4em;
+  z-index: 100;
+  text-shadow: .04em .04em 0 #9cb8b3;
+}
+
+
+
+/*before signup*/
 .link-to {
   padding: 20px;
   color: white;
   flex-direction: row;
-  
-
 }
-
+.links-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  text-align:center;
+  top: 500px;
+}
 .link-to-trip{
-  color:black
+  display: flex;
+  font: 600 1.5em/1 'Raleway', sans-serif;
+    color: rgba(0,0,0,.5);
+    text-transform: uppercase;
+    padding-right: 200px;
+    padding-left: 300px;
 }
 
 .nav-bar {
@@ -80,19 +101,18 @@
 }
 
 .add-trip-bg {
-  background-color: #FFCD28;
-  height: 100vh;
-  padding: 5%
+    background-color: #FFCD28;
+    height: 100vh;
+    padding: 5%;
+  
 }
+
 
 .trip-layout{
   display: flex;
   flex-direction: row;
   margin: 10%;
- 
-
 }
-
 
 .trip-current {
   /* margin: 20px;
@@ -101,26 +121,53 @@
 }
 
 .single-gear{
-  border: #282c34;
-  border-style: solid;
   margin: 10px;
+  padding-bottom: 30px;
+border: #000000;
+border: 1px;
+
 }
+
 .single-trip {
   display: flex;
   flex-wrap: nowrap;
   overflow-y: scroll;
-}
-.trips-top{
-  display: flex;
-  flex-wrap: nowrap;
-  margin: 0 0.3em 0 0.3em;
-  color: #FFCD28;
-  font-size: 2em;
-  text-transform: uppercase;
-  cursor: pointer;
- 
+  padding-bottom: 30px;
 }
 
+.trips-top{
+  padding: 20px;
+  background: rgb(6,103,120);
+  background: linear-gradient(90deg, rgba(6,103,120,1) 0%, rgba(14,147,172,1) 68%, rgba(255,255,255,1) 68%);
+}
+
+h2.trips-top{
+  padding: 20px;
+  background: rgb(255,205,40);
+  background: linear-gradient(90deg, rgba(255,205,40,1) 22%, rgba(255,255,255,1) 97%, rgba(255,255,255,1) 100%);
+  
+  
+}
+
+
+
+h1.location{
+  /* padding: 20px; */
+  flex-wrap: nowrap;
+  margin: 0 0.3em 0 0.3em;
+  /* color: #FFCD28; */
+  font-size: 100px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline;
+  /* background: #111; */
+  line-height: 1.3em;
+  /* padding: .1em; */
+  font-size: 5em;
+  color: #fff;
+  box-shadow: .3em 0 0 #111, -.3em 0 0 #111;
+  background-color: #000000;
+}
 
 .add-gear{
   margin: 20px;
@@ -135,37 +182,33 @@
  font-style: italic;
 }
 .gear-collection{
+ padding: 20px;
   position: relative;
-  /* left: 300px; */
+  left: 30px;
   width: 300px;
+  border: solid;
+}
+
+.gear-packed {
+  padding: 20px;
+  position: relative;
+  left: 40px;
+  width: 300px;
+  border: solid;
+
+}
+
+.current-trip{
+padding: 20px;
 }
 .current-trip-title {
   font-size: 30px;
 }
-/* ul.horizontal,
-ul.horizontal li {
-    margin: 0;
-    padding: 0;
+.edit-btn{
+  background-color: #000000;
+  color: #f2f2f2;
+  width: 400px;
 }
-ul.horizontal {
-    list-style-type: none;
-    width: 400px;
-    background: whiteSmoke;
-    overflow: auto;
-    margin: 0 auto;
-}
-ul.horizontal li {
-  width: 24%;
-  margin: 0 0 2% 1%;
-  float: left;
-    width: 99px;
-    height: 99px;
-    margin: 0 1px 1px 0;
-    text-align: center;
-    background-color: gray;
-    color: white;
-} */
-
 
 
 

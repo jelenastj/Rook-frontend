@@ -61,14 +61,14 @@ render() {
                 <fieldset  className="form-fieldset ui-input __first">
                     <input type="text" id="username" tabIndex="0" name="username" onChange={this.handleChange} />
                     <label htmlFor="username">
-                    <span data-text="Username">Username</span>
+                    <p data-text="Username">Username</p>
                         </label>
                 </fieldset>
                 <fieldset className="form-fieldset ui-input __third">
                     <input type="password" id="new-password" name="password"
                         onChange={this.handleChange} />
                     <label htmlFor="new-password">
-                        <span data-text="New Password">New Password</span>
+                        <p data-text="New Password">Password</p>
                         </label>
                 </fieldset>
                     <div className="form-footer">

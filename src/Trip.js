@@ -4,7 +4,7 @@ import TripCollection from './TripCollection';
 import GearCollection from "./GearCollection"
 import TripCurrent from "./TripCurrent"
 import GearPacked from './GearPacked';
-
+import { IconName } from "react-icons/ai";
 
 
 export default class Trip extends Component {
@@ -29,11 +29,8 @@ export default class Trip extends Component {
                 if (userTrips && userTrips.length > 0) {
                     this.props.setCurrentTrip(userTrips[0]);
                 }
-
             })
-
     }
-
 
     handleAddTrip = (trip) => {
         this.setState({
@@ -42,21 +39,20 @@ export default class Trip extends Component {
     };
 
     render() {
-    
+
         return (
             <div className="trip-all">
                 <NavBar
                     currentUser={this.props.currentUser}
                     handleLogout={this.props.handleLogout}
                     routerProps={this.props.routerProps} />
-                <div className={"trips-top"}>
+                <div>
                     <TripCollection
                         trips={this.state.trips}
                         handleAddTrip={this.handleAddTrip}
                         currentUser={this.props.currentUser}
                         handleClick={this.props.setCurrentTrip}
-                       
-                         />
+                    />
                 </div>
                 <div className="trip-layout">
                     <div className="trip-current">
@@ -65,6 +61,7 @@ export default class Trip extends Component {
                             trips={this.state.trips}
                         />
                     </div>
+                    
                     <GearCollection
                         currentUser={this.props.currentUser}
                         gears={this.props.gears}
@@ -74,7 +71,7 @@ export default class Trip extends Component {
                         currentUser={this.props.currentUser}
                         handleClick={this.props.handleClick}
                         deleteGear={this.props.deleteGear}
-                        />
+                    />
                 </div>
 
             </div>

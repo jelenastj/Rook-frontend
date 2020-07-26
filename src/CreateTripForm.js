@@ -64,7 +64,7 @@ class CreateTripForm extends Component {
 
         <form>
           <label>
-            <span>Location</span>
+            <p>Location</p>
             <input
               type="text"
               name="location"
@@ -88,7 +88,6 @@ class CreateTripForm extends Component {
               format='yyyy-MM-dd'
               onChange={this.onChange}
               value={this.state.date}
-
             />
           </div>
 

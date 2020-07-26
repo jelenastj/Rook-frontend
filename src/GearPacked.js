@@ -17,7 +17,7 @@ const GearPacked = (props) => {
     <div className="gear-packed">
 
       <div>
-        <h1>PACKED </h1>
+        {/* <h1>PACKED </h1> */}
         {mapGears()}
       </div>
     </div>
