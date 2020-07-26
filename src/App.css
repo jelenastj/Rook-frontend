@@ -212,4 +212,28 @@ padding: 20px;
 
 
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+.cards_grid .card {
+
+	background: #f9f9f9;
+  border-radius: 0;
+  width: 100%;
+	
+}
+
+.cards_grid .card:hover {
+	background: #ccc;
+}
+
+.cards_grid .card_image_holder {
+	position: relative;
+	overflow: hidden;
+	padding-right: 0px;
+}
 
