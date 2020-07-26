@@ -7,6 +7,7 @@ import GearPacked from './GearPacked';
 import { IconName } from "react-icons/ai";
 
 
+
 export default class Trip extends Component {
     constructor(props) {
         super(props)
@@ -54,26 +55,24 @@ export default class Trip extends Component {
                         handleClick={this.props.setCurrentTrip}
                     />
                 </div>
+
+
                 <div className="trip-layout">
                     <div className="trip-current">
                         <TripCurrent
                             showCurrentTrip={this.props.showCurrentTrip}
-                            trips={this.state.trips}
-                        />
+                            trips={this.state.trips}/>
                     </div>
-                    
-                    <GearCollection
-                        currentUser={this.props.currentUser}
-                        gears={this.props.gears}
-                        handleClick={this.props.addToGearPack} />
-                    <GearPacked
-                        showCurrentTrip={this.props.showCurrentTrip}
-                        currentUser={this.props.currentUser}
-                        handleClick={this.props.handleClick}
-                        deleteGear={this.props.deleteGear}
-                    />
-                </div>
-
+                        <GearCollection
+                            currentUser={this.props.currentUser}
+                            gears={this.props.gears}
+                            handleClick={this.props.addToGearPack} />
+                        <GearPacked
+                            showCurrentTrip={this.props.showCurrentTrip}
+                            currentUser={this.props.currentUser}
+                            handleClick={this.props.handleClick}
+                            deleteGear={this.props.deleteGear} />
+                 </div>
             </div>
 
         )

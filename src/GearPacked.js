@@ -1,6 +1,7 @@
 import React from 'react';
 import GearPackedItem from './GearPackedItem';
 
+
 const GearPacked = (props) => {
   // const id = props.currentUser.id;
   // const trips = props.trips.filter((trip) => trip.user_id === id)

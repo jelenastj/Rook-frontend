@@ -1,65 +1,61 @@
 import React from 'react';
-import { constSelector } from 'recoil';
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { IconContext } from "react-icons";
+import { FaWeight } from "react-icons/fa";
 
 const GearItem = (props) => {
 
 
   const image = props.gear.geartype
-  let num =`${image}.png`
+  let num = `${image}.png`
   console.log(num)
 
   return (
-   
-    <div className="single-gear">
- <div class="cards_grid container-md">
- <div class="row">
-		<div class="col-12 col-sm-6">
-			<div class="card">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="card_image_holder col-md-6">
-      <img src= {`../public/icons/png/${num}`}/>
+    // <div className="single-gear">
+      <div className="container">
+
+      <div class="wavecard">
+        <img class="wavecard-image"src="./images/matheus-bandoch-mkdI8JN6sDU-unsplash-2.jpg" alt="image"/>
+        <div class="wavecard-body">
+        <span className="gear-name">{props.gear.name}</span><h4 style={{textTransform: 'uppercase'}}>{props.gear.brand}</h4>
+      
+        <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
+      
       </div>
-						<div class="col-md-6"></div>
-      <p class="card-text">{props.gear.name} by {props.gear.brand}</p>
-      <p>{props.gear.notes}</p>
-      <p>Weight: {props.gear.weight}</p>
-      <p>type: {props.gear.geartype}</p>
-      </div>
-      <div class="col-auto d-none d-lg-block"></div>
-    
-      {!props.showAddGearBtn
-        ?
-        <button className="add-gear-to-pack-btn"
-          key={props.gear.id}
-          onClick={() => props.handleClick(props.gear)} >Add</button>
-        :
-        null
+      {/* </div> */}
+  </div>
+
+
+      {
+        !props.showAddGearBtn
+          ?
+          <IconContext.Provider value={{ size: "2em"}}>
+          <button className="add-gear-to-pack-btn"
+            key={props.gear.id}
+            onClick={() => props.handleClick(props.gear)}>
+               < IoIosAddCircleOutline></IoIosAddCircleOutline></button>
+               </IconContext.Provider>
+          :
+          null
       }
 
-      {props.showDelete
-        ?
-        <button
-          className="delete-gear-btn"
-          onClick={(e) => {
-            e.stopPropagation();
-            props.deleteGear(props.gear)
-          }
-          }
-        >
-          Delete
+      {
+        props.showDelete
+          ?
+          <button
+            className="delete-gear-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              props.deleteGear(props.gear)
+            }
+            }
+          >
+            Delete
               </button>
-        : null}
-        
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    
-    </div>
-    
-    
+          : null
+      }
+
+    </div >  
   )
 }
 

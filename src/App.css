@@ -104,27 +104,23 @@ body {
     background-color: #FFCD28;
     height: 100vh;
     padding: 5%;
-  
 }
-
 
 .trip-layout{
   display: flex;
   flex-direction: row;
-  margin: 10%;
+  margin: 130px 5px 15px 20px; 
 }
 
 .trip-current {
-  /* margin: 20px;
-  padding: 30px; */
-  width: 400px;
+  width: 500px;
 }
 
 .single-gear{
   margin: 10px;
   padding-bottom: 30px;
-border: #000000;
-border: 1px;
+  border: #000000;
+  border: 1px;
 
 }
 
@@ -138,15 +134,23 @@ border: 1px;
 .trips-top{
   padding: 20px;
   background: rgb(6,103,120);
-  background: linear-gradient(90deg, rgba(6,103,120,1) 0%, rgba(14,147,172,1) 68%, rgba(255,255,255,1) 68%);
+  background: linear-gradient(90deg, #066778 0%, rgba(14,147,172,1) 68%, rgba(255,255,255,1) 68%);
+  
 }
 
-h2.trips-top{
-  padding: 20px;
-  background: rgb(255,205,40);
-  background: linear-gradient(90deg, rgba(255,205,40,1) 22%, rgba(255,255,255,1) 97%, rgba(255,255,255,1) 100%);
-  
-  
+.location-display{
+  color:white;
+  font-size: 30px;
+  text-transform: uppercase;
+  line-height: 1.3em;
+  padding: .1em;
+  background: linear-gradient(90deg, rgba(6,103,120,1) 0%, rgba(255,207,40,1) 22%, rgba(255,255,255,1) 97%, rgba(255,255,255,1) 100%);}
+.notes-display {
+  height: 300px;
+  margin: 10px;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+
 }
 
 
@@ -165,7 +169,7 @@ h1.location{
   /* padding: .1em; */
   font-size: 5em;
   color: #fff;
-  box-shadow: .3em 0 0 #111, -.3em 0 0 #111;
+  /* box-shadow: .3em 0 0 #111, -.3em 0 0 #111; */
   background-color: #000000;
 }
 
@@ -186,54 +190,121 @@ h1.location{
   position: relative;
   left: 30px;
   width: 300px;
-  border: solid;
+  
+
 }
 
 .gear-packed {
   padding: 20px;
   position: relative;
-  left: 40px;
+  left: 100px;
   width: 300px;
-  border: solid;
 
 }
 
 .current-trip{
 padding: 20px;
+
 }
 .current-trip-title {
   font-size: 30px;
 }
-.edit-btn{
-  background-color: #000000;
-  color: #f2f2f2;
-  width: 400px;
+.edit-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  /* width: 400px; */
+}
+.add-gear-to-pack-btn{
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.delete-gear-btn{
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  /* width: 400px; */
+}
+
+.container {
+  
+  height: 400px;
+  /* background: linear-gradient(to top right, #ffffff 0%, #ceecf9 100%); */
+  padding: 24px 35px;
+  margin: 40px;
 }
 
 
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+p {
+  padding: 0;
+  margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
 
-.cards_grid .card {
-
-	background: #f9f9f9;
-  border-radius: 0;
+.wavecard {
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+}
+.clipcard-body,.wavecard-body {
+  /* padding: 15px; */
+  color:rgb(6,103,120);
+  font-weight: 100 !important;
+  /* text-shadow: .04em .04em 0 #aec1bd; */
+}
+.wavecard-image {
+  height: 250px;
   width: 100%;
-	
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 75%, 70% 84%, 34% 64%, 0 78%, 0% 43%, 0 0);
+  clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 75%, 70% 84%, 34% 64%, 0 78%, 0% 43%, 0 0);
+  transition: all 0.5s ease-in-out;
+}
+.wavecard-image:hover {
+  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 79%, 66% 65%, 36% 78%, 0 78%, 0% 43%, 0 0);
+  clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 79%, 66% 65%, 36% 78%, 0 78%, 0% 43%, 0 0);
+}
+    
+.wavecard-body {
+  flex-direction: column;
+  display: flex;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 140px;
+ 
+}
+.wavecard-image:hover {
+  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 79%, 66% 65%, 36% 78%, 0 78%, 0% 43%, 0 0);
+  clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 79%, 66% 65%, 36% 78%, 0 78%, 0% 43%, 0 0);
+
 }
 
-.cards_grid .card:hover {
-	background: #ccc;
+.h4-wavecard-body {
+  color:black
+}
+.date {
+  padding: 20px;
+  font-size: 20px !important;
+  font-weight: lighter !important;
+  list-style-type: none;
 }
 
-.cards_grid .card_image_holder {
-	position: relative;
-	overflow: hidden;
-	padding-right: 0px;
+span.gear-name{
+  color: rgb(240, 101, 0);
+  letter-spacing: 0.2em;
+  font: 600 1.5em/1 'Raleway', sans-serif;
+    justify-content: center;
+    top: 70%;
+  
 }
+
 

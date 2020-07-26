@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import GearCollection from './GearCollection';
 import { Link } from "react-router-dom";
 
+
 export default class Gear extends Component {
 
     render() {
@@ -22,6 +23,8 @@ export default class Gear extends Component {
                         handleAddGear={this.props.handleAddGear}
                         handleClick={this.props.handleClick} 
                         deleteGear={this.props.deleteGear}/>
+
+
                 </div>
             </div>
         )
