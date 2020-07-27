@@ -9,8 +9,8 @@ const GearPackedItem = (props) => {
 
         // <div className="single-gear">
         // <div className="container">
-        <div class="cards-list">
-            <div class="homecard">
+        <div className="cards-list">
+            <div className="homecard">
 
                 <h4 >{props.gear.name} by {props.gear.brand}</h4>
                 <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>

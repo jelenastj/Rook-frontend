@@ -62,28 +62,29 @@ class App extends Component {
     this.getTrip(trip)
   }
 
-  // addToGearPack = (gear) => {
-  //   const trip_id = this.state.currentTrip.id
-  //   console.log(JSON.stringify(gear))
-  //   fetch(` http://localhost:3000/api/v1/trips/${trip_id}/gears`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //     body: JSON.stringify(gear),
-  //   }).then(r => r.json())
-  //     .then(data => {
-  //       console.log(data)
-  //     })
-  // }
-
   addToGearPack = (gear) => {
-    const trip = this.state.currentTrip
-    console.log(trip)
-    // this.addGear(gear)
-    trip.gears = this.state.gears
+    const trip_id = this.state.currentTrip.id
+    console.log(JSON.stringify(gear))
+    fetch(` http://localhost:3000/api/v1/tripgears`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({gear_id: gear.id, trip_id: trip_id}),
+    }).then(r => r.json())
+      .then(data => {
+        this.getTrip(data.trip)
+      })
+
+  }
+
+  // addToGearPack = (gear) => {
+  //   const trip = this.state.currentTrip
+  //   console.log(trip)
+  //   // this.addGear(gear)
+  //   trip.gears = this.state.gears
 
     // fetch(` http://localhost:3000/api/v1/trips/${trip.id}`, {
     //   method: "PUT",
@@ -98,7 +99,7 @@ class App extends Component {
     //     console.log(data)
     //   })
 
-  }
+
 
   getTrip = (trip) => {
     fetch(`http://localhost:3000/api/v1/trips/${trip.id}`, {

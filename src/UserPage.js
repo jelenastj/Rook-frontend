@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import { Link } from "react-router-dom";
 import './App.css';
 export default class UserPage extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
@@ -23,10 +24,12 @@ export default class UserPage extends Component {
 
         // () => this.props.history.push("/userpage");
     }
+    
 
     render() {
         let currentUser = this.props.currentUser;
         let total = this.state.trips.length
+    
         return (
             <div className="user-page">
                 <div>

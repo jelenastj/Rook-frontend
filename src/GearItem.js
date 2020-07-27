@@ -6,17 +6,18 @@ import { FaWeight } from "react-icons/fa";
 const GearItem = (props) => {
 
 
-  const image = props.gear.geartype
-  let num = `${image}.png`
-  console.log(num)
+  // const image = props.gear.geartype
+  // let num = `${image}.png`
+  // console.log(num)
 
   return (
     // <div className="single-gear">
+      <div >
+        
       <div className="container">
-      <div className='gear-coll-page'>
-      <div class="wavecard">
-        <img class="wavecard-image"src="./images/matheus-bandoch-mkdI8JN6sDU-unsplash-2.jpg" alt="image"/>
-        <div class="wavecard-body">
+      <div className="wavecard">
+        <img className="wavecard-image"src="./images/matheus-bandoch-mkdI8JN6sDU-unsplash-2.jpg" alt="image"/>
+        <div className="wavecard-body">
         <span className="gear-name">{props.gear.name}</span><h4 style={{textTransform: 'uppercase'}}>{props.gear.brand}</h4>
       
         <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
@@ -26,8 +27,8 @@ const GearItem = (props) => {
  
 
 
-      {/* {
-        !props.showAddGearBtn
+      {
+      window.location.href.slice(-4) !== 'gear'
           ?
           <IconContext.Provider value={{ size: "2em"}}>
           <button className="add-gear-to-pack-btn"
@@ -37,7 +38,7 @@ const GearItem = (props) => {
                </IconContext.Provider>
           :
           null
-      } */}
+      }
 
       {
         props.showDelete

@@ -129,6 +129,7 @@ body {
   display: flex;
   flex-direction: row;
   margin: 130px 5px 15px 20px; 
+  height: 100vh;
 }
 
 .trip-current {
@@ -208,21 +209,20 @@ h1.location{
 
 
 .gear-collection{
-  display: list-item !important;
-  position: relative !important;
   left: 30px;
   height: 100vh;
   overflow: hidden;
   overflow-y: scroll;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px;
+  position: relative; */
 }
-.gear-coll-page{
+/* .gear-coll-page{
   display: flex;
-}
+} */
 
 .gear-packed {
   padding: 20px;
-  position: relative;
+  /* position: relative; */
   left: 70px;
   width: 500px;
   text-align: center;
@@ -436,5 +436,28 @@ span.gear-name{
     padding-left: 300px;
     text-decoration: none;
     position: absolute;
-    right: 200px;
+    right: -20px;
+}
+
+.all-gears-rendered{
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  width: 50vh;
+  /* position: absolute; */
+  /* right: 300px; */
+  /* margin: 20px; */
+}
+
+.image-2{
+  background-image: url("/images/sylas-boesten-PjQS_lhv3ZA-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 500px;
+  margin: 50px;
+  display: flex;
+  position: absolute;
+  right: 400px;
+  top: 50px
 }

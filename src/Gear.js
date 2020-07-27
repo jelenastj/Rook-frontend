@@ -15,19 +15,17 @@ export default class Gear extends Component {
                         currentUser={this.props.currentUser}
                         handleLogout={this.props.handleLogout}
                         routerProps={this.props.routerProps} />
-                        <Link to="/addgear" className="link-to-add-gear" >Add Gear</Link>
-                        
-                        <div newStyles={{color: 'red'}}>
-                    <GearCollection
-                        showDelete={true}
-                        gears={this.props.gears}
-                        currentUser={this.props.currentUser} 
-                        handleAddGear={this.props.handleAddGear}
-                        handleClick={this.props.handleClick} 
-                        deleteGear={this.props.deleteGear}/>
-</div>
-
                 </div>
+
+                <Link to="/addgear" className="link-to-add-gear" >Add Gear</Link>
+                <GearCollection
+                    showDelete={true}
+                    gears={this.props.gears}
+                    currentUser={this.props.currentUser}
+                    handleAddGear={this.props.handleAddGear}
+                    handleClick={this.props.handleClick}
+                    deleteGear={this.props.deleteGear} />
+                <div className="image-2"> </div>
             </div>
         )
     }
