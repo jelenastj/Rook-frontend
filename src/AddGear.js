@@ -64,17 +64,17 @@ export default class AddGear extends Component {
     render() {
 
         return (
+            <div className="add-gear-page">
             <div className="add-gear">
             <h4>Add new piece of gear or clothing item:</h4>
             <Form className="add-gear" onSubmit={this.addGear}>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
-                        Name
                           </Form.Label>
                     <Col sm={10}>
                         <Form.Control
                             type="text"
-                            placeholder="Name"
+                            placeholder="gear"
                             name="name"
                             value={this.state.name}
                             onChange={this.handleChange} />
@@ -83,8 +83,8 @@ export default class AddGear extends Component {
 
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
-                        Brand
-                          </Form.Label>
+                       
+                          </Form.Label >
                     <Col sm={10}>
                         <Form.Control
                             type="text"
@@ -98,7 +98,7 @@ export default class AddGear extends Component {
                 
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
-                        Quantity
+                        
                           </Form.Label>
                     <Col sm={10}>
                         <Form.Control
@@ -112,7 +112,7 @@ export default class AddGear extends Component {
 
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
-                        Weight
+                        
                           </Form.Label>
                     <Col sm={10}>
                         <Form.Control
@@ -125,7 +125,7 @@ export default class AddGear extends Component {
                 </Form.Group>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
-                        Link
+                        
                           </Form.Label>
                     <Col sm={10}>
                         <Form.Control
@@ -139,7 +139,7 @@ export default class AddGear extends Component {
 
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
-                        Notes
+                       
                           </Form.Label>
                     <Col sm={10}>
                         <Form.Control
@@ -153,7 +153,7 @@ export default class AddGear extends Component {
                 <Form.Row className="align-items-center">
                     <Col xs="auto" className="my-1">
                         <Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
-                            Type
+                          
                         </Form.Label>
                         <Form.Control
                             as="select"
@@ -164,7 +164,7 @@ export default class AddGear extends Component {
                             value={this.state.geartype}
                             onChange={this.handleChange}
                         >
-                            <option value="0">Choose...</option>
+                            <option value="0">Type...</option>
                             <option value="1">Clothing</option>
                             <option value="2">Equipment</option>
                             <option value="3">Shoes</option>
@@ -174,8 +174,11 @@ export default class AddGear extends Component {
                         </Form.Control>
                     </Col>
                 </Form.Row>
+                <div>
                 <Button className='button-primary' onClick={this.addGear}> Save </Button>
+                </div>
             </Form>
+            </div>
             </div>
             );
     }

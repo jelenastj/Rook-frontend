@@ -9,11 +9,13 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div className='nav-bar'>
-        <NavLink to="/logout">Log out</NavLink>
-        <NavLink to="/gear"> Gear</NavLink>
-        <NavLink to="/trip">Trips</NavLink>
-        <NavLink to="/userpage">Home</NavLink>
+      <div className='nav-bar' >
+        <span className="app-title">ROOK</span>
+        <span className="app-subtitle">list and weight your outdoor gear</span>
+        <NavLink to="/logout"style={{ color: 'white', textDecoration: 'inherit' }} >Log out</NavLink>
+        <NavLink to="/gear" style={{ color: 'white', textDecoration: 'inherit' }}> Gear</NavLink>
+        <NavLink to="/trip" style={{ color: 'white', textDecoration: 'inherit' }}>Trips</NavLink>
+        <NavLink to="/userpage" style={{ color: 'white', textDecoration: 'inherit' }}>Home</NavLink>
 
       </div>
     );

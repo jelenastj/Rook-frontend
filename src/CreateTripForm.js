@@ -63,6 +63,7 @@ class CreateTripForm extends Component {
         {/* <button id="cancelEdit" onClick={() => console.log()}>Cancel</button> */}
 
         <form>
+          <div className="ui-input">
           <label>
             <p>Location</p>
             <input
@@ -72,16 +73,22 @@ class CreateTripForm extends Component {
               onChange={this.handleChange}
             />
           </label>
+          </div>
+          
+          
+          <div className="ui-input">
           <label>
-            Description
-              <textarea
+              <textarea 
+              placeholder="Description" 
+              cols="30" rows="5"
+              resize= "none"
               name="description"
               className='add-description'
               value={this.state.description}
               onChange={this.handleChange}
             />
           </label>
-
+          </div>
           <div>
             <DateRangePicker
               name="date"

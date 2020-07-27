@@ -8,26 +8,25 @@ const GearPackedItem = (props) => {
     return (
 
         // <div className="single-gear">
-        <div className="container">
-            <div class="wavecard">
-                <img class="wavecard-image" src="./images/sylas-boesten-PjQS_lhv3ZA-unsplash.jpg" alt="image" />
-               
-                <div class="wavecard-body">
+        // <div className="container">
+        <div class="cards-list">
+            <div class="homecard">
 
-                    <h4 >{props.gear.name} by {props.gear.brand}</h4>
-                    <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
-                </div>
-            </div >
-            <IconContext.Provider value={{ size: "2em"}}>
-            <button
-                className="delete-gear-btn"
-                onClick={(e) => {
-                    e.stopPropagation();
-                    props.deleteGear(props.gear)
-                }
-                }>
-                < IoIosRemoveCircleOutline> </IoIosRemoveCircleOutline></button>
+                <h4 >{props.gear.name} by {props.gear.brand}</h4>
+                <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
+
+                {/* </div > */}
+                <IconContext.Provider value={{ size: "2em" }}>
+                    <button
+                        className="delete-gear-btn"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            props.deleteGear(props.gear)
+                        }
+                    }>
+                        < IoIosRemoveCircleOutline> </IoIosRemoveCircleOutline></button>
                 </IconContext.Provider>
+            </div>
         </div>
     )
 }

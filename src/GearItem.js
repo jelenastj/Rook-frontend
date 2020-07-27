@@ -13,7 +13,7 @@ const GearItem = (props) => {
   return (
     // <div className="single-gear">
       <div className="container">
-
+      <div className='gear-coll-page'>
       <div class="wavecard">
         <img class="wavecard-image"src="./images/matheus-bandoch-mkdI8JN6sDU-unsplash-2.jpg" alt="image"/>
         <div class="wavecard-body">
@@ -21,12 +21,12 @@ const GearItem = (props) => {
       
         <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
       
-      </div>
+      
       {/* </div> */}
-  </div>
+ 
 
 
-      {
+      {/* {
         !props.showAddGearBtn
           ?
           <IconContext.Provider value={{ size: "2em"}}>
@@ -37,7 +37,7 @@ const GearItem = (props) => {
                </IconContext.Provider>
           :
           null
-      }
+      } */}
 
       {
         props.showDelete
@@ -56,6 +56,9 @@ const GearItem = (props) => {
       }
 
     </div >  
+    </div>
+    </div>
+    </div>
   )
 }
 

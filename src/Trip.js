@@ -63,10 +63,12 @@ export default class Trip extends Component {
                             showCurrentTrip={this.props.showCurrentTrip}
                             trips={this.state.trips}/>
                     </div>
+                    <div className="gear-collection">
                         <GearCollection
                             currentUser={this.props.currentUser}
                             gears={this.props.gears}
                             handleClick={this.props.addToGearPack} />
+                        </div>
                         <GearPacked
                             showCurrentTrip={this.props.showCurrentTrip}
                             currentUser={this.props.currentUser}

@@ -33,7 +33,22 @@ body {
   margin: auto;
   background-image: url("/images/andreas-gucklhorn-mawU2PoJWfU-unsplash.jpg")
 }
+.landing-page-title{
+  font-family: 'Thasadith', sans-serif;
+  font-size: 170px;
+  font-weight: 900;
+  color: #FFCD28;
+  /* white-space: nowrap;
+  padding: .2em 0 .25em 0; */
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  display: flex;
+ flex-direction: row;
+ position: absolute;
+ right:250px;
+ bottom:20%
 
+}
 
 .welcome-user{
   font: 600 1.5em/1 'Raleway', sans-serif;
@@ -80,7 +95,7 @@ body {
 .link-to-trip{
   display: flex;
   font: 600 1.5em/1 'Raleway', sans-serif;
-    color: rgba(0,0,0,.5);
+  color: rgb(240, 101, 0);
     text-transform: uppercase;
     padding-right: 200px;
     padding-left: 300px;
@@ -96,7 +111,7 @@ body {
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
+  text-decoration: none !important;
   font-size: 17px;
 }
 
@@ -104,6 +119,10 @@ body {
     background-color: #FFCD28;
     height: 100vh;
     padding: 5%;
+    text-align: center;
+    font: 600 1.5em/1 'Raleway', sans-serif;
+    
+    
 }
 
 .trip-layout{
@@ -132,13 +151,17 @@ body {
 }
 
 .trips-top{
-  padding: 20px;
+  font: 300 1em/1 'Raleway', sans-serif;
+  padding: 10px 70px 10px 20px;
   background: rgb(6,103,120);
-  background: linear-gradient(90deg, #066778 0%, rgba(14,147,172,1) 68%, rgba(255,255,255,1) 68%);
+  background: linear-gradient(90deg, #066778 0%, #0e93ac 68%, rgba(255,255,255,1) 68%);
+
   
 }
 
 .location-display{
+  font-family: 'Thasadith', sans-serif;
+  font-weight: bolder;
   color:white;
   font-size: 30px;
   text-transform: uppercase;
@@ -156,49 +179,56 @@ body {
 
 
 h1.location{
-  /* padding: 20px; */
   flex-wrap: nowrap;
-  margin: 0 0.3em 0 0.3em;
-  /* color: #FFCD28; */
-  font-size: 100px;
   text-transform: uppercase;
   cursor: pointer;
   display: inline;
-  /* background: #111; */
   line-height: 1.3em;
-  /* padding: .1em; */
   font-size: 5em;
   color: #fff;
-  /* box-shadow: .3em 0 0 #111, -.3em 0 0 #111; */
   background-color: #000000;
 }
+.add-gear-page{
+  background-color: #0e93ac;
+  height: 100vh;
+  font: 600 1.5em/1 'Raleway', sans-serif;
+  text-align: center;
+  padding: 50px;
 
+}
 .add-gear{
   margin: 20px;
   padding-top: 20px;
   width: 50%;
   position: relative;
   left: 20%;
+  background-color:#0e93ac
 
 };
 
-.h1{
- font-style: italic;
-}
-.gear-collection{
- padding: 20px;
-  position: relative;
-  left: 30px;
-  width: 300px;
-  
 
+.gear-collection{
+  display: list-item !important;
+  position: relative !important;
+  left: 30px;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+}
+.gear-coll-page{
+  display: flex;
 }
 
 .gear-packed {
   padding: 20px;
   position: relative;
-  left: 100px;
-  width: 300px;
+  left: 70px;
+  width: 500px;
+  text-align: center;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 100vh;
 
 }
 
@@ -212,7 +242,7 @@ padding: 20px;
 .edit-btn {
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  /* width: 400px; */
+  color: rgb(240, 101, 0);
 }
 .add-gear-to-pack-btn{
   background-color: rgba(0, 0, 0, 0);
@@ -221,15 +251,12 @@ padding: 20px;
 .delete-gear-btn{
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  /* width: 400px; */
+  color: rgb(240, 101, 0);
 }
 
 .container {
-  
   height: 400px;
-  /* background: linear-gradient(to top right, #ffffff 0%, #ceecf9 100%); */
   padding: 24px 35px;
-  margin: 40px;
 }
 
 
@@ -249,10 +276,8 @@ a {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
 }
 .clipcard-body,.wavecard-body {
-  /* padding: 15px; */
   color:rgb(6,103,120);
   font-weight: 100 !important;
-  /* text-shadow: .04em .04em 0 #aec1bd; */
 }
 .wavecard-image {
   height: 250px;
@@ -302,9 +327,114 @@ span.gear-name{
   color: rgb(240, 101, 0);
   letter-spacing: 0.2em;
   font: 600 1.5em/1 'Raleway', sans-serif;
-    justify-content: center;
-    top: 70%;
+  justify-content: center;
+  top: 70%;
   
 }
 
 
+/*vertical cards packed*/
+
+.cards-list{
+  width:50%;
+}
+.homecard{
+  border:1px solid #eee;
+  padding:1em;
+  width: 400px;
+  box-shadow:0px 0px 3px 3px #f7f7f7;
+}
+.homecard:hover{
+  background:#ffffff;
+  border:1px solid #FFCD28;
+  box-shadow:0px 0px 0px #eee;
+}
+.homecard h2{
+  margin:0;
+  padding:0;
+  color:#ccc;
+  font-size:2.5em;
+  position:absolute;
+  bottom:1em;
+  left:1em;
+}
+.homecard a:link,
+.homecard a:visited{
+  width:8em;
+  color:#000000;
+  background-color:#FFCD28;
+  border-radius:0px;
+  bottom:1em;
+  right:1em;
+  position:absolute;
+  padding:1em 1em;
+  text-align:center;
+  font-weight:bold;
+  line-height:1;
+}
+.homecard a:hover{
+  text-decoration:none;
+}
+
+/* ADD TRIP FORM*/
+.ui-input{
+  padding: 20px;
+  /* width: 20%;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  background: none;
+  padding: 16px 0 16px 0;
+  font-size: 24px !important;
+  outline: 0;
+  display: block;
+  padding: 8px 0 8px 0; */
+  text-transform: uppercase;
+  font-size: 14px !important;
+  letter-spacing: .0875em;
+  font-weight: 500;
+  text-align: left;
+  /* width: 300px; */
+  /* height: 300px; */
+  text-decoration-line: none;
+  text-align: center;
+}
+
+.button-primary{
+  margin: 20px;
+  padding: 10px;
+}
+
+.add-gear-form-input{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  background: none;
+  
+}
+.app-title{
+  font-family: 'Thasadith', sans-serif;
+  color: #FFCD28;
+  font-size: 40px;
+  padding-left: 40px;
+  padding-top: 20px;
+}
+.app-subtitle{
+  padding-left: 10px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 400;
+}
+.link-to-add-gear{
+  margin: 30px;
+  display: flex;
+  font: 600 1.5em/1 'Raleway', sans-serif;
+  color: rgb(240, 101, 0);
+    text-transform: uppercase;
+    padding-right: 200px;
+    padding-left: 300px;
+    text-decoration: none;
+    position: absolute;
+    right: 200px;
+}
