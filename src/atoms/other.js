@@ -20,3 +20,37 @@ import { useRecoilState } from "recoil";
 
 // export default CreateTripForm;
 
+ // addToGearPack = (gear) => {
+  //   const trip = this.state.currentTrip
+  //   console.log(trip)
+  //   // this.addGear(gear)
+  //   trip.gears = this.state.gears
+
+    // fetch(` http://localhost:3000/api/v1/trips/${trip.id}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //   },
+    //   body: JSON.stringify(trip),
+    // }).then(r => r.json())
+    //   .then(data => {
+    //     console.log(data)
+    //   })
+
+
+  fetch(` http://localhost:3000/api/v1/trips/${trip.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({ newGears }),
+  }).then(r => r.json())
+    .then(updatedTrip => {
+      this.seState({ currentTrip: updatedTrip })
+    })
+
+}

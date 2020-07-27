@@ -58,13 +58,10 @@ class App extends Component {
     });
   }
 
-  setCurrentTrip = (trip) => {
-    this.getTrip(trip)
-  }
-
   addToGearPack = (gear) => {
     const trip_id = this.state.currentTrip.id
     console.log(JSON.stringify(gear))
+
     fetch(` http://localhost:3000/api/v1/tripgears`, {
       method: "POST",
       headers: {
@@ -72,34 +69,44 @@ class App extends Component {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({gear_id: gear.id, trip_id: trip_id}),
+      body: JSON.stringify({ gear_id: gear.id, trip_id: trip_id }),
     }).then(r => r.json())
       .then(data => {
         this.getTrip(data.trip)
       })
 
   }
+  remove(array, element) {
+    const index = array.indexOf(element);
+    array.splice(index, 1);
+    return array
+  }
 
-  // addToGearPack = (gear) => {
-  //   const trip = this.state.currentTrip
-  //   console.log(trip)
-  //   // this.addGear(gear)
-  //   trip.gears = this.state.gears
+  deleteFromGearPack = (gear) => {
+    const trip_id = this.state.currentTrip.id
+    const newGears = this.remove(this.state.currentTrip.gears, gear)
+    console.log(newGears)
 
-    // fetch(` http://localhost:3000/api/v1/trips/${trip.id}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    //   body: JSON.stringify(trip),
-    // }).then(r => r.json())
-    //   .then(data => {
-    //     console.log(data)
-    //   })
+    fetch(` http://localhost:3000/api/v1/trips/${trip_id}/updategears`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ gear_id: gear.id }),
+    }).then(r => r.json())
+      .then(updatedTrip => {
+        this.setState({ currentTrip: updatedTrip })
+      })
+  }
 
 
+  deleteGear = (gear) => {
+    this.setState({
+      gears: [...this.state.gears.filter((e) => e.id !== gear.id)],
+    });
+  }
 
   getTrip = (trip) => {
     fetch(`http://localhost:3000/api/v1/trips/${trip.id}`, {
@@ -111,25 +118,13 @@ class App extends Component {
       .then((response) => response.json())
       .then((currentTrip) =>
         this.setState({ currentTrip }))
-
   }
 
-  deleteFromGearPacked = (g) => {
-    this.setState({
-      gears: this.state.gears.map(gear => {
-        if (gear === g) {
-          gear.enlisted = false
-        }
-        return gear
-      })
-    })
+  setCurrentTrip = (trip) => {
+    this.getTrip(trip)
   }
 
-  deleteGear = (gear) => {
-    this.setState({
-      gears: [...this.state.gears.filter((e) => e.id !== gear.id)],
-    });
-  }
+
 
   render() {
     return (
@@ -178,7 +173,7 @@ class App extends Component {
           showCurrentTrip={this.state.currentTrip}
           gears={this.state.gears}
           addToGearPack={this.addToGearPack}
-          handleClick={this.deleteFromGearPacked}
+          deleteFromGearPack={this.deleteFromGearPack}
         />
 
         <PrivateRoute
@@ -211,6 +206,6 @@ class App extends Component {
       </Switch>
     );
   }
-}
 
+}
 export default withRouter(App);

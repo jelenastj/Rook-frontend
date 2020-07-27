@@ -10,7 +10,7 @@ class Login extends Component {
             password: ""
         }
     }
-  
+
 
     handleChange = (event) => {
         const { name, value } = event.target
@@ -25,7 +25,7 @@ class Login extends Component {
         event.target.reset();
 
         const { username, password } = this.state;
-        
+
         const user = { username, password };
         fetch("http://localhost:3000/api/v1/login", {
             method: "POST",
@@ -44,41 +44,41 @@ class Login extends Component {
                 if (response.user) {
                     localStorage.setItem("token", response.jwt);
                     this.props.handleLogin(response.user);
-                    
+
                 }
             })
-           
-            
+
+
     }
 
 
-render() {
-    return (
-        <div className="login-page">
-        <div className="container">
-            <h2>Please log into your account</h2>
-            <form ref="myForm" className="form" action="/userpage" onSubmit={this.login}>
-                <fieldset  className="form-fieldset ui-input __first">
-                    <input type="text" id="username" tabIndex="0" name="username" onChange={this.handleChange} />
-                    <label htmlFor="username">
-                    <p data-text="Username">Username</p>
-                        </label>
-                </fieldset>
-                <fieldset className="form-fieldset ui-input __third">
-                    <input type="password" id="new-password" name="password"
-                        onChange={this.handleChange} />
-                    <label htmlFor="new-password">
-                        <p data-text="New Password">Password</p>
-                        </label>
-                </fieldset>
-                    <div className="form-footer">
-                    <button className="btn" type="submit">Submit</button>
-                    </div>
-            </form>
-        </div>
-        </div>
-    );
-}
+    render() {
+        return (
+            <div className="login-page">
+                <div className="container">
+                    <h2>Please log into your account</h2>
+                    <form ref="myForm" className="form" action="/userpage" onSubmit={this.login}>
+                        <fieldset className="form-fieldset ui-input __first">
+                            <input type="text" id="username" tabIndex="0" name="username" onChange={this.handleChange} />
+                            <label htmlFor="username">
+                                <p data-text="Username">Username</p>
+                            </label>
+                        </fieldset>
+                        <fieldset className="form-fieldset ui-input __third">
+                            <input type="password" id="new-password" name="password"
+                                onChange={this.handleChange} />
+                            <label htmlFor="new-password">
+                                <p data-text="New Password">Password</p>
+                            </label>
+                        </fieldset>
+                        <div className="form-footer">
+                            <button className="btn" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Login;

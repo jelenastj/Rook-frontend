@@ -15,15 +15,14 @@ const GearPackedItem = (props) => {
                 <h4 >{props.gear.name} by {props.gear.brand}</h4>
                 <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
 
-                {/* </div > */}
                 <IconContext.Provider value={{ size: "2em" }}>
                     <button
                         className="delete-gear-btn"
                         onClick={(e) => {
                             e.stopPropagation();
-                            props.deleteGear(props.gear)
+                            props.deleteFromGearPack(props.gear)
                         }
-                    }>
+                        }>
                         < IoIosRemoveCircleOutline> </IoIosRemoveCircleOutline></button>
                 </IconContext.Provider>
             </div>

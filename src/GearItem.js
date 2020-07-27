@@ -12,53 +12,48 @@ const GearItem = (props) => {
 
   return (
     // <div className="single-gear">
-      <div >
-        
+    <div >
       <div className="container">
-      <div className="wavecard">
-        <img className="wavecard-image"src="./images/matheus-bandoch-mkdI8JN6sDU-unsplash-2.jpg" alt="image"/>
-        <div className="wavecard-body">
-        <span className="gear-name">{props.gear.name}</span><h4 style={{textTransform: 'uppercase'}}>{props.gear.brand}</h4>
-      
-        <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
-      
-      
-      {/* </div> */}
- 
-
-
-      {
-      window.location.href.slice(-4) !== 'gear'
-          ?
-          <IconContext.Provider value={{ size: "2em"}}>
-          <button className="add-gear-to-pack-btn"
-            key={props.gear.id}
-            onClick={() => props.handleClick(props.gear)}>
-               < IoIosAddCircleOutline></IoIosAddCircleOutline></button>
-               </IconContext.Provider>
-          :
-          null
-      }
-
-      {
-        props.showDelete
-          ?
-          <button
-            className="delete-gear-btn"
-            onClick={(e) => {
-              e.stopPropagation();
-              props.deleteGear(props.gear)
+        <div className="wavecard">
+          <img className="wavecard-image" src="./images/matheus-bandoch-mkdI8JN6sDU-unsplash-2.jpg" alt="landscape" />
+          <div className="wavecard-body">
+            <span className="gear-name">{props.gear.name}</span>
+            <h4 style={{ textTransform: 'uppercase' }}>{props.gear.brand}</h4>
+            <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
+            
+            
+            {
+              window.location.href.slice(-4) !== 'gear'
+                ?
+                <IconContext.Provider value={{ size: "2em" }}>
+                  <button className="add-gear-to-pack-btn"
+                    key={props.gear.id}
+                    onClick={() => props.handleClick(props.gear)}>
+                    < IoIosAddCircleOutline></IoIosAddCircleOutline></button>
+                </IconContext.Provider>
+                :
+                null
             }
-            }
-          >
-            Delete
+
+            {
+              props.showDelete
+                ?
+                <button
+                  className="delete-gear-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    props.deleteGear(props.gear)
+                  }
+                  }
+                >
+                  Delete
               </button>
-          : null
-      }
+                : null
+            }
 
-    </div >  
-    </div>
-    </div>
+          </div >
+        </div>
+      </div>
     </div>
   )
 }

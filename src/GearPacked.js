@@ -10,10 +10,12 @@ const GearPacked = (props) => {
 
     const gears = props.showCurrentTrip.gears
     return gears && gears.map(gear => {
-      return <GearPackedItem key={Math.random()} gear={gear} handleClick={props.handleClick} />
+      return <GearPackedItem
+        key={Math.random()}
+        gear={gear}
+        deleteFromGearPack={props.deleteFromGearPack} />
     })
   }
-
   return (
     <div className="gear-packed">
       {/* <h1>PACKED </h1> */}

@@ -11,7 +11,6 @@ class SignUp extends Component {
         }
     }
 
-
     handleChange = (event) => {
         const { name, value } = event.target
 
@@ -19,7 +18,6 @@ class SignUp extends Component {
             [name]: value
         })
     };
-
 
     createUser = (event) => {
         event.preventDefault()
@@ -47,17 +45,28 @@ class SignUp extends Component {
                     this.props.handleLogin(response.user);
                 }
             })
-        }
-    
+    }
+
     render() {
         return (
             <form onSubmit={this.createUser}>
-                <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
-                <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
-                <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    onChange={this.handleChange} />
+                <input type="text"
+                    name="username"
+                    placeholder="Username"
+                    onChange={this.handleChange} />
+                <input
+                    type="text"
+                    name="password"
+                    placeholder="Password"
+                    onChange={this.handleChange} />
                 <button type="submit">Submit</button>
             </form>
-                
+
         );
     }
 }
