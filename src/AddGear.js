@@ -67,6 +67,7 @@ export default class AddGear extends Component {
             <div className="add-gear-page">
             <div className="add-gear">
             <h4>Add new piece of gear or clothing item:</h4>
+            
             <Form className="add-gear" onSubmit={this.addGear}>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
@@ -150,7 +151,7 @@ export default class AddGear extends Component {
                             onChange={this.handleChange} />
                     </Col>
                 </Form.Group>
-                <Form.Row className="align-items-center">
+                {/* <Form.Row className="align-items-center">
                     <Col xs="auto" className="my-1">
                         <Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
                           
@@ -173,10 +174,16 @@ export default class AddGear extends Component {
 
                         </Form.Control>
                     </Col>
-                </Form.Row>
-                <div>
-                <Button className='button-primary' onClick={this.addGear}> Save </Button>
-                </div>
+                </Form.Row> */}
+                 <Form.Group as={Row} controlId="formHorizontalEmail">
+                 <Form.Label column sm={2}>
+                       
+                       </Form.Label>
+                 <Col sm={10}>
+               
+                <Button  onClick={this.addGear}> Save </Button>
+                </Col>
+                </Form.Group>
             </Form>
             </div>
             </div>

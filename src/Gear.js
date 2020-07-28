@@ -25,6 +25,7 @@ export default class Gear extends Component {
                     handleAddGear={this.props.handleAddGear}
                     handleClick={this.props.handleClick}
                     deleteGear={this.props.deleteGear} />
+                    
                 <div className="image-2"> </div>
             </div>
         )

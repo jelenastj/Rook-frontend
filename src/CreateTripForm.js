@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Form } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
 import DateRangePicker from '@wojtekmaj/react-daterange-picker'
 import 'react-calendar/dist/Calendar.css';
 import { withRouter } from "react-router-dom";
@@ -51,7 +51,7 @@ class CreateTripForm extends Component {
       location: "",
       description: "",
       date: "",
-    },() => this.props.history.push("/userpage"));
+    }, () => this.props.history.push("/userpage"));
 
   };
 
@@ -59,47 +59,63 @@ class CreateTripForm extends Component {
 
     return (
 
-      <div className='add-trip'>
+      <div className="add-trip">
         {/* <button id="cancelEdit" onClick={() => console.log()}>Cancel</button> */}
 
-        <form>
-          <div className="ui-input">
-          <label>
-            <p>Location</p>
-            <input
-              type="text"
-              name="location"
-              value={this.state.location}
-              onChange={this.handleChange}
-            />
-          </label>
-          </div>
-          
-          
-          <div className="ui-input">
-          <label>
-              <textarea 
-              placeholder="Description" 
-              cols="30" rows="5"
-              resize= "none"
-              name="description"
-              className='add-description'
-              value={this.state.description}
-              onChange={this.handleChange}
-            />
-          </label>
-          </div>
-          <div>
-            <DateRangePicker
-              name="date"
-              format='yyyy-MM-dd'
-              onChange={this.onChange}
-              value={this.state.date}
-            />
-          </div>
+        <Form >
+          <Form.Group as={Row} >
+            <Form.Label column sm={2}>
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                placeholder="Location"
+                type="text"
+                name="location"
+                value={this.state.location}
+                onChange={this.handleChange}
+              />
+            </Col>
+          </Form.Group>
 
-        </form>
-        <button className='button-primary' onClick={this.addTrip}>Add</button>
+          <Form.Group as={Row} controlId="formHorizontalEmail">
+            <Form.Label column sm={2}>
+            </Form.Label >
+            <Col sm={10}>
+
+              <Form.Control
+                placeholder="Description"
+                cols="30" rows="5"
+                resize="none"
+                name="description"
+                className='add-description'
+                value={this.state.description}
+                onChange={this.handleChange}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} controlId="formHorizontalEmail">
+            <Form.Label column sm={2}>
+
+            </Form.Label>
+            <Col sm={10}>
+              <DateRangePicker
+                name="date"
+                format='yyyy-MM-dd'
+                onChange={this.onChange}
+                value={this.state.date}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} controlId="formHorizontalEmail">
+            <Form.Label column sm={2}>
+
+            </Form.Label>
+            <Col sm={10}>
+
+              <Button className='button-primary' onClick={this.addTrip}>Add</Button>
+            </Col>
+          </Form.Group>
+        </Form>
       </div>
     );
   }

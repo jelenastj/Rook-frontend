@@ -4,7 +4,8 @@ import TripCollection from './TripCollection';
 import GearCollection from "./GearCollection"
 import TripCurrent from "./TripCurrent"
 import GearPacked from './GearPacked';
-// import { IconName } from "react-icons/ai";
+import { TiArrowForward } from "react-icons/ti";
+import { IconContext } from "react-icons";
 
 export default class Trip extends Component {
     constructor(props) {
@@ -53,7 +54,11 @@ export default class Trip extends Component {
                         handleClick={this.props.setCurrentTrip}
                     />
                 </div>
-
+                <IconContext.Provider value={{ style: { color: "#066778", fontSize: "13em" } }}>
+                    <div className="arrow">
+                        <TiArrowForward />
+                    </div>
+                </IconContext.Provider>
 
                 <div className="trip-layout">
                     <div className="trip-current">
@@ -61,20 +66,22 @@ export default class Trip extends Component {
                             showCurrentTrip={this.props.showCurrentTrip}
                             trips={this.state.trips} />
                     </div>
+
+
                     <div className="gear-collection">
                         <GearCollection
                             currentUser={this.props.currentUser}
                             gears={this.props.gears}
-                            handleClick={this.props.addToGearPack} 
-                            deleteGear={this.props.deleteGear}/>
+                            handleClick={this.props.addToGearPack}
+                            deleteGear={this.props.deleteGear} />
                     </div>
                     <GearPacked
                         showCurrentTrip={this.props.showCurrentTrip}
                         currentUser={this.props.currentUser}
                         deleteFromGearPack={this.props.deleteFromGearPack}
-                         />
+                    />
                 </div>
-            </div>
+            </div >
 
         )
     }

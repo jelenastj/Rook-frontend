@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+html, body, #app, #app>div {
+  height: 100%;
+  font: 600 1.5em/1 'Raleway', sans-serif;
+}
 
 .App-header {
   background-color: #282c34;
@@ -43,10 +47,10 @@ body {
   text-transform: uppercase;
   letter-spacing: .3em;
   display: flex;
- flex-direction: row;
- position: absolute;
- right:250px;
- bottom:20%
+  flex-direction: row;
+  position: absolute;
+  right:250px;
+  bottom:20%
 
 }
 
@@ -97,8 +101,11 @@ body {
   font: 600 1.5em/1 'Raleway', sans-serif;
   color: rgb(240, 101, 0);
     text-transform: uppercase;
-    padding-right: 200px;
-    padding-left: 300px;
+    justify-content: center;
+    width: 50%;
+    /* padding-right: 200px;
+    padding-left: 300px; */
+    letter-spacing: .3em;
 }
 
 .nav-bar {
@@ -119,21 +126,29 @@ body {
     background-color: #FFCD28;
     height: 100vh;
     padding: 5%;
-    text-align: center;
+    position: relative;
+    align-items: center;
     font: 600 1.5em/1 'Raleway', sans-serif;
     
     
+    
 }
-
+.add-trip {
+  background-color: #FFCD28;
+  width: 50%;
+  display: flexbox;
+  position: relative;
+ align-items: center;
+}
 .trip-layout{
   display: flex;
   flex-direction: row;
-  margin: 130px 5px 15px 20px; 
+  margin: 70px 5px 15px 20px; 
   height: 100vh;
 }
 
 .trip-current {
-  width: 500px;
+  width: 400px;
 }
 
 .single-gear{
@@ -156,8 +171,6 @@ body {
   padding: 10px 70px 10px 20px;
   background: rgb(6,103,120);
   background: linear-gradient(90deg, #066778 0%, #0e93ac 68%, rgba(255,255,255,1) 68%);
-
-  
 }
 
 .location-display{
@@ -195,6 +208,7 @@ h1.location{
   font: 600 1.5em/1 'Raleway', sans-serif;
   text-align: center;
   padding: 50px;
+
 
 }
 .add-gear{
@@ -247,6 +261,7 @@ padding: 20px;
 .add-gear-to-pack-btn{
   background-color: rgba(0, 0, 0, 0);
   border: none;
+  outline: none;
 }
 .delete-gear-btn{
   background-color: rgba(0, 0, 0, 0);
@@ -427,16 +442,14 @@ span.gear-name{
   font-weight: 400;
 }
 .link-to-add-gear{
-  margin: 30px;
+  margin: 40px;
   display: flex;
   font: 600 1.5em/1 'Raleway', sans-serif;
   color: rgb(240, 101, 0);
     text-transform: uppercase;
-    padding-right: 200px;
-    padding-left: 300px;
     text-decoration: none;
     position: absolute;
-    right: -20px;
+    right: 1080px;
 }
 
 .all-gears-rendered{
@@ -446,18 +459,26 @@ span.gear-name{
   width: 50vh;
   /* position: absolute; */
   /* right: 300px; */
-  /* margin: 20px; */
+  margin: 60px;
 }
 
 .image-2{
   background-image: url("/images/sylas-boesten-PjQS_lhv3ZA-unsplash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 500px;
-  width: 500px;
+  height: 600px;
+  width: 600px;
   margin: 50px;
   display: flex;
   position: absolute;
-  right: 400px;
-  top: 50px
+  right: 100px;
+  top: 110px;
+}
+
+.arrow {
+  height: 20px;
+  display: flex;
+  position: absolute;
+  left: 760px;
+  
 }

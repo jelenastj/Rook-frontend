@@ -3,8 +3,6 @@ import GearPackedItem from './GearPackedItem';
 
 
 const GearPacked = (props) => {
-  // const id = props.currentUser.id;
-  // const trips = props.trips.filter((trip) => trip.user_id === id)
 
   function mapGears() {
 
@@ -18,7 +16,6 @@ const GearPacked = (props) => {
   }
   return (
     <div className="gear-packed">
-      {/* <h1>PACKED </h1> */}
       {mapGears()}
     </div>
   )

@@ -38,16 +38,25 @@ export default class UserPage extends Component {
                         handleLogout={this.props.handleLogout}
                         routerProps={this.props.routerProps}
                     />
-                    {total.length === 0
+                    {total ===0
                         ?
                         <div className="welcome-user">
-                            Hello {currentUser.username}, you don't have any trips yet.
+                            Hello,
+                            <span className="welcome" data-shadow-text="Text-Shadow">
+                            {currentUser.username} </span>, 
+                            <br></br>
+                            you don't have any trips yet.
+                            <br></br>
+                            <br></br>
+                        
+                           <span> Let's add some!</span>
+                           
                     </div> :
                         <div className="welcome-user">
                             Hello,
                             <span className="welcome" data-shadow-text="Text-Shadow">
                                 {currentUser.username} </span>,
-                            <br></br>
+                                <br></br>
                             you have
                             <span className="welcome" data-shadow-text="Text-Shadow">
                                 {total > 0 ?
@@ -61,9 +70,9 @@ export default class UserPage extends Component {
                     </div>
                     }
 
-                    <div className="links-container">
-                        <Link to="/createtrip" className="link-to-trip" >Add Trip</Link>
-                        <Link to="/addgear" className="link-to-trip" >Add gear</Link>
+                    <div className="links-container" >
+                        <Link to="/createtrip"  className="link-to-trip" style={{ textDecoration: 'inherit' }} >Add Trip</Link>
+                        <Link to="/addgear" className="link-to-trip" style={{ textDecoration: 'inherit' }}>Add gear</Link>
                     </div>
                 </div>
             </div >

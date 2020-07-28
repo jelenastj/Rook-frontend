@@ -103,9 +103,13 @@ class App extends Component {
 
 
   deleteGear = (gear) => {
-    this.setState({
-      gears: [...this.state.gears.filter((e) => e.id !== gear.id)],
-    });
+    fetch(`http://localhost:3000/api/v1/gears/${gear.id}`, {
+      method: 'DELETE'
+    }).then(() => {
+      fetch(`http://localhost:3000/api/v1/gears`)
+        .then(r => r.json())
+        .then(gears => this.setState({ gears }))
+    })
   }
 
   getTrip = (trip) => {
@@ -203,7 +207,7 @@ class App extends Component {
           component={NotFound}
         />
 
-      </Switch>
+      </Switch >
     );
   }
 
