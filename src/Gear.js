@@ -17,7 +17,7 @@ export default class Gear extends Component {
                         routerProps={this.props.routerProps} />
                 </div>
 
-                <Link to="/addgear" className="link-to-add-gear" >Add Gear</Link>
+                <Link to="/addgear" className="link-to-add-gear" style={{ textDecoration: 'inherit' }}>Add Gear</Link>
                 <GearCollection
                     showDelete={true}
                     gears={this.props.gears}
@@ -25,7 +25,7 @@ export default class Gear extends Component {
                     handleAddGear={this.props.handleAddGear}
                     handleClick={this.props.handleClick}
                     deleteGear={this.props.deleteGear} />
-                    
+
                 <div className="image-2"> </div>
             </div>
         )

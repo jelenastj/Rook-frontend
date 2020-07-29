@@ -5,7 +5,7 @@ export default class AddGear extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: " ",
+            name: "",
             brand: "",
             notes: '',
             geartype: '',
@@ -34,7 +34,7 @@ export default class AddGear extends Component {
             user_id: this.props.currentUser.id,
             weight: this.state.weight
             // retired: this.state.retired,
-            
+
         }
         fetch(`http://localhost:3000/api/v1/gears`, {
             method: "POST",
@@ -45,8 +45,8 @@ export default class AddGear extends Component {
             },
             body: JSON.stringify(gear),
         }).then((response) => response.json())
-            .then((gear) => { console.log(gear) })
-            
+            .then((gear) => this.props.addGear(gear))
+
         this.setState({
             name: " ",
             brand: "",
@@ -57,47 +57,47 @@ export default class AddGear extends Component {
             user_id: '',
             weight: '',
             // retired: false
-            
-        },() => this.props.history.push("/trip"));
+
+        }, () => this.props.history.push("/trip"));
 
     };
     render() {
 
         return (
             <div className="add-gear-page">
-            <div className="add-gear">
-            <h4>Add new piece of gear or clothing item:</h4>
-            
-            <Form className="add-gear" onSubmit={this.addGear}>
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
-                          </Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type="text"
-                            placeholder="gear"
-                            name="name"
-                            value={this.state.name}
-                            onChange={this.handleChange} />
-                    </Col>
-                </Form.Group>
+                <div className="add-gear">
+                    <h3>Add new piece of a gear or a clothing item:</h3>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
-                       
-                          </Form.Label >
-                    <Col sm={10}>
-                        <Form.Control
-                            type="text"
-                            placeholder="brand"
-                            name="brand"
-                            value={this.state.brand}
-                            onChange={this.handleChange} />
-                    </Col>
-                </Form.Group>
+                    <Form className="add-gear" onSubmit={this.addGear}>
 
-                
-                <Form.Group as={Row} controlId="formHorizontalEmail">
+                        <Form.Group as={Row} controlId="formHorizontalEmail">
+                            <Form.Label column sm={2}>
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="name"
+                                    name="name"
+                                    value={this.state.name}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row} controlId="formHorizontalEmail">
+                            <Form.Label column sm={2}>
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="brand"
+                                    name="brand"
+                                    value={this.state.brand}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </Form.Group>
+
+
+                        {/* <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
                         
                           </Form.Label>
@@ -109,49 +109,49 @@ export default class AddGear extends Component {
                             value={this.state.quantity}
                             onChange={this.handleChange} />
                     </Col>
-                </Form.Group>
+                </Form.Group> */}
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
-                        
-                          </Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type="text"
-                            placeholder="weight"
-                            name="weight"
-                            value={this.state.weight}
-                            onChange={this.handleChange} />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
-                        
-                          </Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type="text"
-                            placeholder="link"
-                            name="url"
-                            value={this.state.url}
-                            onChange={this.handleChange} />
-                    </Col>
-                </Form.Group>
+                        <Form.Group as={Row} controlId="formHorizontalEmail">
+                            <Form.Label column sm={2}>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
-                       
-                          </Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type="text"
-                            placeholder="notes"
-                            name="notes"
-                            value={this.state.notes}
-                            onChange={this.handleChange} />
-                    </Col>
-                </Form.Group>
-                {/* <Form.Row className="align-items-center">
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="weight"
+                                    name="weight"
+                                    value={this.state.weight}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} controlId="formHorizontalEmail">
+                            <Form.Label column sm={2}>
+
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="link"
+                                    name="url"
+                                    value={this.state.url}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row} controlId="formHorizontalEmail">
+                            <Form.Label column sm={2}>
+
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="notes"
+                                    name="notes"
+                                    value={this.state.notes}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </Form.Group>
+                        {/* <Form.Row className="align-items-center">
                     <Col xs="auto" className="my-1">
                         <Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
                           
@@ -175,18 +175,18 @@ export default class AddGear extends Component {
                         </Form.Control>
                     </Col>
                 </Form.Row> */}
-                 <Form.Group as={Row} controlId="formHorizontalEmail">
-                 <Form.Label column sm={2}>
-                       
-                       </Form.Label>
-                 <Col sm={10}>
-               
-                <Button  onClick={this.addGear}> Save </Button>
-                </Col>
-                </Form.Group>
-            </Form>
+                        <Form.Group as={Row} controlId="formHorizontalEmail">
+                            <Form.Label column sm={2}>
+
+                            </Form.Label>
+                            <Col sm={10}>
+
+                                <Button onClick={this.addGear}> Save </Button>
+                            </Col>
+                        </Form.Group>
+                    </Form>
+                </div>
             </div>
-            </div>
-            );
+        );
     }
 }

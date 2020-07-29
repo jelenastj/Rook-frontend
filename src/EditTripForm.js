@@ -11,11 +11,11 @@ export default class EditTripForm extends Component {
         this.state = {
             trip_id: this.props.currentTrip.id,
             location: this.props.currentTrip.location,
-            description: this.props.currentTrip.notes,
-            date: [new Date(this.props.currentTrip.start_date), new Date(this.props.currentTrip.end_date)] //[new Date(), new Date()],
+            notes:this.props.currentTrip.description,
+            date: [new Date(), new Date()] //[new Date(), new Date()],
         }
     }
-    
+
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -24,30 +24,35 @@ export default class EditTripForm extends Component {
     onChange = (date) => {
         this.setState({ date })
     }
-    
+
+
+
     editTrip = () => {
+        const trip = {
+            user_id: this.props.currentUser.id,
+            location: this.state.location,
+            notes: this.state.notes,
+            start_date: this.state.date[0],
+            end_date: this.state.date[1]
+        }
+        console.log(trip)
         fetch(`http://localhost:3000/api/v1/trips/${this.state.trip_id}`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({
-                user_id: this.props.currentUser.id,
-                location: this.state.location,
-                notes: this.state.description,
-                start_date: this.state.date[0],
-                end_date: this.state.date[1]
-            }),
+            body: JSON.stringify({trip}),
         })
             .then((response) => response.json())
-            // .then((trip) =>
-            //     this.setState({
-            //         user_id: this.props.currentUser.id,
-            //         location: this.state.location,
-            //         notes: this.state.description,
-            //         start_date: this.state.date[0],
-            //         end_date: this.state.date[1]
-            //     }, () => this.props.history.push("/trip")))
+            .catch(errors => console.log(errors))
+        // .then((trip) =>
+        //     this.setState({
+        //         user_id: this.props.currentUser.id,
+        //         location: this.state.location,
+        //         notes: this.state.description,
+        //         start_date: this.state.date[0],
+        //         end_date: this.state.date[1]
+        //     }, () => this.props.history.push("/trip")))
     }
 
     render() {
@@ -69,10 +74,11 @@ export default class EditTripForm extends Component {
                     <label>
                         Description
               <textarea
-                            name="description"
+                            name="notes"
                             className='add-description'
-                            value={this.state.description}
+                            value={this.state.notes}
                             onChange={this.handleChange}
+                            placeholder={this.props.currentTrip.notes}
                         />
                     </label>
 

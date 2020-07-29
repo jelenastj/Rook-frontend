@@ -56,7 +56,7 @@ class App extends Component {
     this.setState({
       gears: [...this.state.gears, gear]
     });
-  }
+  } 
 
   addToGearPack = (gear) => {
     const trip_id = this.state.currentTrip.id
@@ -128,8 +128,6 @@ class App extends Component {
     this.getTrip(trip)
   }
 
-
-
   render() {
     return (
       <Switch>
@@ -172,6 +170,7 @@ class App extends Component {
           exact path='/trip'
           component={Trip}
           currentUser={this.state.currentUser}
+          addGear={this.addGear}
           handleLogout={this.handleLogout}
           setCurrentTrip={this.setCurrentTrip}
           showCurrentTrip={this.state.currentTrip}

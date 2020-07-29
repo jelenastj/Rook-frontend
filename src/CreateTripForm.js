@@ -51,7 +51,7 @@ class CreateTripForm extends Component {
       location: "",
       description: "",
       date: "",
-    }, () => this.props.history.push("/userpage"));
+    }, () => this.props.history.push("/trip"));
 
   };
 
@@ -61,8 +61,8 @@ class CreateTripForm extends Component {
 
       <div className="add-trip">
         {/* <button id="cancelEdit" onClick={() => console.log()}>Cancel</button> */}
-
-        <Form >
+        <h1 className="add-trip">ADD NEW TRIP</h1>
+        <Form className="add-trip-form">
           <Form.Group as={Row} >
             <Form.Label column sm={2}>
             </Form.Label>
@@ -100,7 +100,6 @@ class CreateTripForm extends Component {
             <Col sm={10}>
               <DateRangePicker
                 name="date"
-                format='yyyy-MM-dd'
                 onChange={this.onChange}
                 value={this.state.date}
               />

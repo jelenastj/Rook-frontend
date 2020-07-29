@@ -7,7 +7,7 @@ export default class CreateTrip extends Component {
         
         return (
             <div className="add-trip-bg">
-                <h1 className="add-trip">ADD NEW TRIP:</h1>
+             
                 <CreateTripForm
                     currentUser={this.props.currentUser}
                     routerProps={this.props.routerProps}

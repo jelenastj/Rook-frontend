@@ -37,6 +37,7 @@ export default class Trip extends Component {
             trips: [...this.state.trips]
         });
     };
+  
 
     render() {
 
@@ -72,6 +73,7 @@ export default class Trip extends Component {
                         <GearCollection
                             currentUser={this.props.currentUser}
                             gears={this.props.gears}
+                            addGear={this.props.addGear}
                             handleClick={this.props.addToGearPack}
                             deleteGear={this.props.deleteGear} />
                     </div>

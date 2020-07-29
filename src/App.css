@@ -126,19 +126,33 @@ body {
     background-color: #FFCD28;
     height: 100vh;
     padding: 5%;
-    position: relative;
-    align-items: center;
-    font: 600 1.5em/1 'Raleway', sans-serif;
-    
-    
-    
+    /* position: relative; */
+    text-align: center;
+    left: 800px;
+    font-family: 'Thasadith', sans-serif;  
 }
-.add-trip {
-  background-color: #FFCD28;
+h1.add-trip{
+/* width: 100vh; */
+left: 500px;
+  /* justify-content: center; */
+} 
+
+.add-trip{
+  /* background-color: #FFCD28; */
   width: 50%;
-  display: flexbox;
-  position: relative;
+  /* display: flexbox; */
+ /* position: sticky; */
  align-items: center;
+}
+.add-trip h1{
+  position: relative;
+  text-align: center;
+}
+
+.add-trip-form{
+  position: relative;
+  left: 300px;
+  text-align: center;
 }
 .trip-layout{
   display: flex;
@@ -175,13 +189,22 @@ body {
 
 .location-display{
   font-family: 'Thasadith', sans-serif;
-  font-weight: bolder;
+  font-weight: bold;
   color:white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
   font-size: 30px;
   text-transform: uppercase;
   line-height: 1.3em;
-  padding: .1em;
-  background: linear-gradient(90deg, rgba(6,103,120,1) 0%, rgba(255,207,40,1) 22%, rgba(255,255,255,1) 97%, rgba(255,255,255,1) 100%);}
+  padding: .3em;
+  background: linear-gradient(90deg, rgba(6,103,120,1) 0%, rgba(255,207,40,1) 22%, rgba(255,255,255,1) 97%, rgba(255,255,255,1) 100%);
+}
+
+.location-display span {
+  text-transform: lowercase;
+  padding-left: 10px;
+  color: rgb(240, 101, 0);
+  font-weight: 900;
+}
 .notes-display {
   height: 300px;
   margin: 10px;
@@ -257,6 +280,7 @@ padding: 20px;
   background-color: rgba(0, 0, 0, 0);
   border: none;
   color: rgb(240, 101, 0);
+  outline: none;
 }
 .add-gear-to-pack-btn{
   background-color: rgba(0, 0, 0, 0);
@@ -267,6 +291,7 @@ padding: 20px;
   background-color: rgba(0, 0, 0, 0);
   border: none;
   color: rgb(240, 101, 0);
+  outline: none;
 }
 
 .container {
@@ -336,6 +361,19 @@ a {
   font-size: 20px !important;
   font-weight: lighter !important;
   list-style-type: none;
+}
+
+.date li {
+  padding: 10px;
+  }
+
+.date li span{
+  font-family: 'Thasadith', sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+  padding: 30px;
+  margin: 10px;
+  text-align: center;
 }
 
 span.gear-name{
@@ -452,6 +490,7 @@ span.gear-name{
     right: 1080px;
 }
 
+
 .all-gears-rendered{
   overflow: hidden;
   overflow-y: scroll;
@@ -482,3 +521,4 @@ span.gear-name{
   left: 760px;
   
 }
+

@@ -6,10 +6,6 @@ import { FaWeight } from "react-icons/fa";
 const GearItem = (props) => {
 
 
-  // const image = props.gear.geartype
-  // let num = `${image}.png`
-  // console.log(num)
-
   return (
     // <div className="single-gear">
     <div >
