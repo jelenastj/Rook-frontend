@@ -6,15 +6,14 @@ import { FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
 
 
 class TripCurrent extends React.Component {
-   
 
-    getParsedDate(strDate){
+
+    getParsedDate(strDate) {
         var strSplitDate = String(strDate).split(' ');
         var date = new Date(strSplitDate[0]);
-        // alert(date);
         var dd = date.getDate();
         var mm = date.getMonth() + 1; //January is 0!
-    
+
         var yyyy = date.getFullYear();
         if (dd < 10) {
             dd = '0' + dd;
@@ -22,22 +21,27 @@ class TripCurrent extends React.Component {
         if (mm < 10) {
             mm = '0' + mm;
         }
-        date =  mm + "-" + dd + "-" + yyyy;
+        date = mm + "-" + dd + "-" + yyyy;
         return date.toString();
     }
+    toPounds(totalWeightoz) {
+        const lb = totalWeightoz / 16;
+        return lb
+    }
 
-    
     render() {
         let gears = this.props.showCurrentTrip.gears
-
-        console.log(gears)
         return (
             <div>
 
                 <button className="edit-btn"
-                    onClick={() => this.props.history.push("/edittrip")}>
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        this.props.deleteTrip(this.props.showCurrentTrip.id)
+                    }
+                    }>
                     < AiFillEdit></AiFillEdit>
-                        Edit
+                        Delete
                 </button>
 
                 <p className="location-display">
@@ -50,7 +54,7 @@ class TripCurrent extends React.Component {
                     </li>
 
                     <li>< FaPlaneArrival></FaPlaneArrival>
-                    <span>{this.getParsedDate(this.props.showCurrentTrip.end_date)}</span>
+                        <span>{this.getParsedDate(this.props.showCurrentTrip.end_date)}</span>
                     </li>
                 </ul>
 
@@ -62,16 +66,18 @@ class TripCurrent extends React.Component {
 
                             Pack Weight:
 
-                       <span> 
-                            {gears.reduce((sum, i) => (sum += i.weight), 0)} oz</span>
+                       <span>
+                                {this.toPounds(gears.reduce((sum, i) => (sum += i.weight), 0)).toFixed(2)} LB</span>
                         </p>
                     }
                 </div>
                 <div className="location-display">
-                    
+
                 </div>
                 <div className="notes-display">
-                COMMENTS: {this.props.showCurrentTrip.notes}
+                    <span> COMMENTS: </span>
+                    <br></br>
+                    {this.props.showCurrentTrip.notes}
                 </div>
             </div>
         )

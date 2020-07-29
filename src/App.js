@@ -60,7 +60,6 @@ class App extends Component {
 
   addToGearPack = (gear) => {
     const trip_id = this.state.currentTrip.id
-    console.log(JSON.stringify(gear))
 
     fetch(` http://localhost:3000/api/v1/tripgears`, {
       method: "POST",
@@ -84,8 +83,7 @@ class App extends Component {
 
   deleteFromGearPack = (gear) => {
     const trip_id = this.state.currentTrip.id
-    const newGears = this.remove(this.state.currentTrip.gears, gear)
-    console.log(newGears)
+    // const newGears = this.remove(this.state.currentTrip.gears, gear)
 
     fetch(` http://localhost:3000/api/v1/trips/${trip_id}/updategears`, {
       method: "PATCH",
@@ -130,6 +128,7 @@ class App extends Component {
 
   render() {
     return (
+      <div className="top">
       <Switch>
         <Route exact path='/login'>
           <Login handleLogin={this.handleLogin} />
@@ -207,6 +206,7 @@ class App extends Component {
         />
 
       </Switch >
+      </div>
     );
   }
 

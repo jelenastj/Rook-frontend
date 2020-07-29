@@ -37,7 +37,23 @@ export default class Trip extends Component {
             trips: [...this.state.trips]
         });
     };
-  
+
+    deleteTrip = (trip) => {
+
+        fetch(`http://localhost:3000/api/v1/trips/${trip}`, {
+            method: 'DELETE'
+        }).then(() => {
+            fetch(`http://localhost:3000/api/v1/trips`)
+                .then(r => r.json())
+                .then((trips) => {
+                    this.setState({ trips });
+            let userTrips = trips.filter((trip) => trip.user_id === this.props.currentUser.id);
+            if (userTrips && userTrips.length > 0) {
+                this.props.setCurrentTrip(userTrips[0]);
+            }
+        })
+    })}
+    
 
     render() {
 
@@ -65,7 +81,8 @@ export default class Trip extends Component {
                     <div className="trip-current">
                         <TripCurrent
                             showCurrentTrip={this.props.showCurrentTrip}
-                            trips={this.state.trips} />
+                            trips={this.state.trips}
+                            deleteTrip={this.deleteTrip} />
                     </div>
 
 

@@ -13,7 +13,7 @@ const GearItem = (props) => {
         <div className="wavecard">
           <img className="wavecard-image" src="./images/matheus-bandoch-mkdI8JN6sDU-unsplash-2.jpg" alt="landscape" />
           <div className="wavecard-body">
-            <span className="gear-name">{props.gear.name}</span>
+            <span className="gear-name" style={{ textTransform: 'lowercase' }}>{props.gear.name}</span>
             <h4 style={{ textTransform: 'uppercase' }}>{props.gear.brand}</h4>
             <h4>< FaWeight> </FaWeight> {props.gear.weight} oz</h4>
             
