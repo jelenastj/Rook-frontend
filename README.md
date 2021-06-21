@@ -1,7 +1,7 @@
 
 
 ## Rook - a website for active outdoors people 
-that helps you track your trips and gear.
+Track your trips and gear!
 
 ### Made with Ruby on Rails on backend, and React on front-end.
 
